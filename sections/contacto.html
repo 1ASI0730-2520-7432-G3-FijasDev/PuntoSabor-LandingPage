@@ -1,0 +1,64 @@
+<section id="contacto">
+  <div class="contact-hero">
+    <h1 data-i18n="contact.h1">Contáctanos</h1>
+  </div>
+
+  <div class="contact-wrap">
+    <div class="container">
+      <div class="contact-card">
+        <!-- Izquierda: formulario -->
+        <div class="contact-left">
+          <h2 data-i18n="contact.leftTitle">Ponte en contacto</h2>
+
+          <form action="#" method="post">
+            <div class="field">
+              <label for="nombre" data-i18n="contact.name">Nombre</label>
+              <input id="nombre" name="nombre" type="text"
+                     data-i18n-placeholder="contact.namePh" placeholder="Tu nombre" required>
+            </div>
+
+            <div class="field">
+              <label for="correo" data-i18n="contact.email">Correo electrónico</label>
+              <input id="correo" name="correo" type="email"
+                     data-i18n-placeholder="contact.emailPh" placeholder="tucorreo@ejemplo.com" required>
+            </div>
+
+            <div class="field">
+              <label for="mensaje" data-i18n="contact.message">Contenido</label>
+              <textarea id="mensaje" name="mensaje"
+                        data-i18n-placeholder="contact.messagePh"
+                        placeholder="Cuéntanos en qué podemos ayudarte" required></textarea>
+            </div>
+
+            <label class="newsletter" data-i18n="contact.newsletter">
+              Me gustaría recibir el boletín.
+            </label>
+
+            <button class="btn" type="submit" data-i18n="contact.send">Enviar</button>
+          </form>
+        </div>
+
+        <!-- Derecha: info + mapa -->
+        <div class="contact-right">
+          <p>
+            Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
+          </p>
+
+          <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?q=Av.+Industrial+1246,+Villa+El+Salvador,+Lima,+Perú&output=embed">
+          </iframe>
+
+          <div class="info">
+            <div class="info-row"><span data-i18n="contact.loc">Lima, Perú</span></div>
+            <div class="info-row"><span data-i18n="contact.phone">+51 963 179 684</span></div>
+            <div class="info-row"><span data-i18n="contact.mail">PuntoSabor@gmail.com</span></div>
+
+            <div class="social" aria-label="Redes sociales">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

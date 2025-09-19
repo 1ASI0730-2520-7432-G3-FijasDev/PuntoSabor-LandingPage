@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PuntoSabor — Landing</title>
+  <meta name="description" content="PuntoSabor conecta a los usuarios con huariques auténticos y ayuda a los emprendedores a crecer." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Just+Another+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .lang-switch{position:absolute;left:10px;top:10px;display:flex;align-items:center;gap:.4rem}
+  </style>
+</head>
+<body>
+  <!-- ======= Header ======= -->
+  <header>
+    <div class="container topbar">
+      <a class="brand" href="#" aria-label="Inicio PuntoSabor">
+        <img src="img/LogoPuntoSabor.png" alt="Logo de PuntoSabor" />
+      </a>
+
+      <!-- Toggle para menú móvil -->
+      <input type="checkbox" id="nav-toggle" />
+
+      <nav>
+        <ul id="main-nav">
+          <li><a href="#inicio"   data-route="inicio"   data-i18n="nav.inicio">Inicio</a></li>
+          <li><a href="#planes"   data-route="planes"   data-i18n="nav.planes">Planes</a></li>
+          <li><a href="#contacto" data-route="contacto" data-i18n="nav.contacto">Contáctanos</a></li>
+          <li><a href="#perfil"   data-route="perfil"   data-i18n="nav.perfil">Perfil</a></li>
+          <li><a href="#promos"   data-route="promos"   data-i18n="nav.promos">Promociones</a></li>
+          <li><a href="#zonas"    data-route="zonas"    data-i18n="nav.zonas">Zonas</a></li>
+        </ul>
+      </nav>
+
+      <label for="nav-toggle" aria-label="Abrir menú" class="md-hidden">☰ <span data-i18n="nav.menu">Menú</span></label>
+
+      <div class="bell" aria-label="Notificaciones" title="Notificaciones">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M12 2a6 6 0 0 0-6 6v3.17l-.59.59A1 1 0 0 0 6 14h12a1 1 0 0 0 .71-1.71l-.71-.71V8a6 6 0 0 0-6-6Z" fill="#111827"/>
+          <path d="M9 18a3 3 0 0 0 6 0" fill="#111827"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Selector de idioma -->
+    <div class="lang-switch">
+      <label for="lang" class="sr-only" data-i18n="nav.idiomaLabel">Idioma</label>
+      <select id="lang" aria-label="Cambiar idioma">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Contenedor donde se inyectarán las secciones -->
+  <main id="app" class="view"></main>
+
+  <!-- ======= Footer======= -->
+  <footer class="site-footer">
+    <div class="container footer-grid compact">
+      <div class="foot-brand">
+        <a href="#inicio" class="foot-logo" aria-label="PuntoSabor inicio" data-route="inicio">
+          <img src="img/LogoPuntoSabor.png" alt="Logo PuntoSabor">
+          <span>PuntoSabor</span>
+        </a>
+      </div>
+
+      <div class="foot-social">
+        <h4 data-i18n="footer.siguenos">Síguenos</h4>
+        <div class="social-row">
+          <a class="social" href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 16.8 2.8 2.8 0 0 0 12 9.2Zm5.3-.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>
+          </a>
+          <a class="social" href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M13 22v-8h3l1-4h-4V7.5c0-1.16.32-1.95 2-1.95h2V2.2A28.33 28.33 0 0 0 14.9 2C11.8 2 10 3.66 10 7.1V10H7v4h3v8h3Z"/></svg>
+          </a>
+          <a class="social" href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M18.7 7.2a6.7 6.7 0 0 1-3.7-2.2V15a4.9 4.9 0 1 1-4.9-4.9c.3 0 .6 0 .8.1v2.9a2.1 2.1 0 1 0 2.1 2.1V2h2.9a6.7 6.7 0 0 0 6.6 6.6V12a10 10 0 0 1-3.8-.8v-.1c-.4-.2-1-.5-1-.5Z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container foot-bottom">
+      <small>© <span id="y"></span> PuntoSabor. <span data-i18n="footer.rights">Todos los derechos reservados.</span></small>
+    </div>
+  </footer>
+
+  <!-- ======= Router SPA con i18n ======= -->
+  <script>
+(function(){
+  const app  = document.getElementById('app');
+  const NAV  = document.getElementById('main-nav');
+  const LANG = document.getElementById('lang');
+
+  /* =============== I18N =============== */
+  const I18N = {
+    es:{
+      nav:{ inicio:'Inicio', planes:'Planes', contacto:'Contactanos', perfil:'Perfil', promos:'Promociones', zonas:'Zonas', menu:'Menú', idiomaLabel:'Idioma' },
+      footer:{ siguenos:'Síguenos', rights:'Todos los derechos reservados.' },
+
+      about:{
+        title:'¿Quiénes somos?',
+        p1:'En PuntoSabor creemos que la verdadera riqueza gastronómica está en los huariques: esos rincones de comida casera, tradicional y auténtica que muchas veces pasan desapercibidos.',
+        p2:'Nuestra plataforma nace con el propósito de dar visibilidad digital a estos pequeños negocios, conectando a los usuarios con experiencias culinarias únicas y accesibles.',
+        p3:'Queremos que cada persona pueda descubrir, valorar y recomendar nuevos sabores, mientras apoyamos a los emprendedores locales a crecer con herramientas tecnológicas y planes diseñados para sus necesidades.',
+        p4:'Más que una app, somos una comunidad gastronómica que celebra la diversidad, la tradición y la pasión por la buena comida.'
+      },
+
+      title:{ promos:'Promociones', zones:'Huariques cerca de ti' },
+
+      /* === PLANES === */
+      plans:{
+        title:'Nuestros planes',
+        basic:'BÁSICO',
+        premium:'PREMIUM',
+        exclusive:'EXCLUSIVO',
+        perMonth:'/MES',
+        priceFree:'Gratis',
+        premium_list:{
+          li1:'Todo lo del plan Básico',
+          li2:'Herramientas de promoción destacada en la app',
+          li3:'Estadísticas de visitas y comentarios de clientes',
+          li4:'Soporte técnico y asesoría en digitalización'
+        },
+        basic_list:{
+          li1:'Publica tu huarique en la plataforma',
+          li2:'Perfil con datos esenciales (ubicación, contacto, horario)',
+          li3:'Acceso a reseñas y calificaciones de clientes'
+        },
+        exclusive_list:{
+          li1:'Todo lo del plan Premium',
+          li2:'Publicidad prioritaria en búsquedas y recomendaciones',
+          li3:'Gestión avanzada de reseñas y comunidad de clientes',
+          li4:'Acceso a eventos gastronómicos y promociones especiales'
+        }
+      },
+
+      contact:{
+        h1:'Contáctanos',
+        leftTitle:'Ponte en contacto',
+        name:'Nombre',
+        namePh:'Tu nombre',
+        email:'Correo electrónico',
+        emailPh:'tucorreo@ejemplo.com',
+        message:'Contenido',
+        messagePh:'Cuéntanos en qué podemos ayudarte',
+        newsletter:'Me gustaría recibir el boletín.',
+        send:'Enviar',
+        loc:'Lima, Perú',
+        phone:'+51 963 179 684',
+        mail:'PuntoSabor@gmail.com'
+      },
+
+      profile:{
+        logo:'LOGO',
+        bioPh:'Escribe aquí la descripción de tu negocio...',
+        upload:'Subir imagen',
+        remove:'Borrar imagen',
+        edit:'Editar',
+        save:'Guardar',
+        delete:'Eliminar',
+        back:'REGRESAR'
+      },
+
+      promos:{
+        title:'Promociones',
+        item:{ pollo:'Pollo a la brasa', chaufa:'Arroz chaufa', chicha:'Jarra de chicha morada' },
+        search:'Buscar restaurant'
+      },
+
+      zones:{
+        title:'Huariques cerca de ti',
+        searchph:'Buscar en esta zona (ej. pollo, ceviche, postres)',
+        chips:{ all:'Todos', pollo:'Pollo', mariscos:'Mariscos', criolla:'Criolla', postres:'Postres' },
+        results:'resultados',
+        back:'Regresar'
+      }
+    },
+
+    en:{
+      nav:{ inicio:'Home', planes:'Plans', contacto:'Contact us', perfil:'Profile', promos:'Promotions', zonas:'Zones', menu:'Menu', idiomaLabel:'Language' },
+      footer:{ siguenos:'Follow us', rights:'All rights reserved.' },
+
+      about:{
+        title:'Who are we?',
+        p1:'At PuntoSabor we believe the true gastronomic richness lies in the huariques: those cozy, traditional and authentic eateries that often go unnoticed.',
+        p2:'Our platform was created to give digital visibility to these small businesses, connecting users with unique and accessible culinary experiences.',
+        p3:'We want everyone to discover, value and recommend new flavors, while we help local entrepreneurs grow with technology tools and plans designed for their needs.',
+        p4:'More than an app, we are a food community that celebrates diversity, tradition and a passion for great food.'
+      },
+
+      title:{ promos:'Promotions', zones:'Huariques near you' },
+
+      /* === PLANS === */
+      plans:{
+        title:'Our plans',
+        basic:'BASIC',
+        premium:'PREMIUM',
+        exclusive:'EXCLUSIVE',
+        perMonth:'/MO',
+        priceFree:'Free',
+        premium_list:{
+          li1:'Everything from the Basic plan',
+          li2:'Featured promotion tools in the app',
+          li3:'Visit statistics and customer comments',
+          li4:'Tech support and digitalization guidance'
+        },
+        basic_list:{
+          li1:'List your huarique on the platform',
+          li2:'Profile with essentials (location, contact, hours)',
+          li3:'Access to customer reviews and ratings'
+        },
+        exclusive_list:{
+          li1:'Everything from the Premium plan',
+          li2:'Priority ads in searches and recommendations',
+          li3:'Advanced review management and community',
+          li4:'Access to gastronomic events and special promos'
+        }
+      },
+
+      contact:{
+        h1:'Contact us',
+        leftTitle:'Get in touch',
+        name:'Name',
+        namePh:'Your name',
+        email:'Email',
+        emailPh:'you@email.com',
+        message:'Message',
+        messagePh:'Tell us how we can help',
+        newsletter:'I would like to receive the newsletter.',
+        send:'Send',
+        loc:'Lima, Peru',
+        phone:'+51 963 179 684',
+        mail:'PuntoSabor@gmail.com'
+      },
+
+      profile:{
+        logo:'LOGO',
+        bioPh:'Write here your business description...',
+        upload:'Upload image',
+        remove:'Remove image',
+        edit:'Edit',
+        save:'Save',
+        delete:'Delete',
+        back:'BACK'
+      },
+
+      promos:{
+        title:'Promotions',
+        item:{ pollo:'Rotisserie chicken', chaufa:'Fried rice (chaufa)', chicha:'Pitcher of chicha morada' },
+        search:'Find restaurant'
+      },
+
+      zones:{
+        title:'Huariques near you',
+        searchph:'Search this area (e.g. chicken, ceviche, desserts)',
+        chips:{ all:'All', pollo:'Chicken', mariscos:'Seafood', criolla:'Creole', postres:'Desserts' },
+        results:'results',
+        back:'Back'
+      }
+    },
+
+    fr:{
+      nav:{ inicio:'Accueil', planes:'Formules', contacto:'Contact', perfil:'Profil', promos:'Promotions', zonas:'Zones', menu:'Menu', idiomaLabel:'Langue' },
+      footer:{ siguenos:'Nous suivre', rights:'Tous droits réservés.' },
+
+      about:{
+        title:'Qui sommes-nous ?',
+        p1:'Chez PuntoSabor, nous pensons que la vraie richesse gastronomique se trouve dans les huariques : ces lieux de cuisine maison, traditionnelle et authentique qui passent souvent inaperçus.',
+        p2:'Notre plateforme est née pour donner de la visibilité numérique à ces petits commerces, en connectant les utilisateurs à des expériences culinaires uniques et accessibles.',
+        p3:'Nous voulons que chacun puisse découvrir, apprécier et recommander de nouvelles saveurs, tout en aidant les entrepreneurs locaux à grandir avec des outils technologiques et des forfaits adaptés à leurs besoins.',
+        p4:'Plus qu’une application, nous sommes une communauté gastronomique qui célèbre la diversité, la tradition et la passion de la bonne cuisine.'
+      },
+
+      title:{ promos:'Promotions', zones:'Huariques près de chez vous' },
+
+      /* === FORMULES === */
+      plans:{
+        title:'Nos formules',
+        basic:'BASIQUE',
+        premium:'PREMIUM',
+        exclusive:'EXCLUSIF',
+        perMonth:'/MOIS',
+        priceFree:'Gratuit',
+        premium_list:{
+          li1:'Tout ce qui est inclus dans la formule Basique',
+          li2:'Outils de promotion mis en avant dans l’app',
+          li3:'Statistiques de visites et commentaires des clients',
+          li4:'Assistance technique et accompagnement à la numérisation'
+        },
+        basic_list:{
+          li1:'Publiez votre huarique sur la plateforme',
+          li2:'Profil avec les informations essentielles (adresse, contact, horaires)',
+          li3:'Accès aux avis et notes des clients'
+        },
+        exclusive_list:{
+          li1:'Tout ce qui est inclus dans la formule Premium',
+          li2:'Publicité prioritaire dans les recherches et recommandations',
+          li3:'Gestion avancée des avis et de la communauté',
+          li4:'Accès aux événements gastronomiques et promotions spéciales'
+        }
+      },
+
+      contact:{
+        h1:'Contact',
+        leftTitle:'Prenez contact',
+        name:'Nom',
+        namePh:'Votre nom',
+        email:'E-mail',
+        emailPh:'vous@email.com',
+        message:'Message',
+        messagePh:'Dites-nous comment nous pouvons aider',
+        newsletter:'Je souhaite recevoir la newsletter.',
+        send:'Envoyer',
+        loc:'Lima, Pérou',
+        phone:'+51 963 179 684',
+        mail:'PuntoSabor@gmail.com'
+      },
+
+      profile:{
+        logo:'LOGO',
+        bioPh:'Écrivez ici la description de votre établissement…',
+        upload:'Téléverser une image',
+        remove:'Supprimer l’image',
+        edit:'Modifier',
+        save:'Enregistrer',
+        delete:'Supprimer',
+        back:'RETOUR'
+      },
+
+      promos:{
+        title:'Promotions',
+        item:{ pollo:'Poulet rôti', chaufa:'Riz sauté (chaufa)', chicha:'Pichet de chicha morada' },
+        search:'Chercher un restaurant'
+      },
+
+      zones:{
+        title:'Huariques près de chez vous',
+        searchph:'Rechercher dans cette zone (ex. poulet, ceviche, desserts)',
+        chips:{ all:'Tous', pollo:'Poulet', mariscos:'Fruits de mer', criolla:'Créole', postres:'Desserts' },
+        results:'résultats',
+        back:'Retour'
+      }
+    }
+  };
+
+  /* estado/language */
+  const state = { lang: localStorage.getItem('lang') || document.documentElement.lang || 'es' };
+  document.documentElement.lang = state.lang;
+  if (LANG) LANG.value = state.lang;
+
+  /* Aplica traducciones dentro de un nodo */
+  function applyI18n(root=document){
+    const dict = I18N[state.lang] || I18N.es;
+
+    // data-i18n → textContent
+    root.querySelectorAll('[data-i18n]').forEach(el=>{
+      const path = el.dataset.i18n.split('.');
+      let val = dict;
+      for(const p of path){ val = val?.[p]; if(val==null) break; }
+      if(typeof val === 'string') el.textContent = val;
+    });
+
+    // placeholders: admite data-i18n-ph y data-i18n-placeholder
+    root.querySelectorAll('[data-i18n-ph],[data-i18n-placeholder]').forEach(el=>{
+      const k = el.dataset.i18nPh || el.dataset.i18nPlaceholder;
+      const path = k.split('.');
+      let val = dict;
+      for(const p of path){ val = val?.[p]; if(val==null) break; }
+      if(typeof val === 'string') el.setAttribute('placeholder', val);
+    });
+
+    // Menú
+    document.querySelectorAll('#main-nav a[data-route]').forEach(a=>{
+      const key = 'nav.' + a.dataset.route;
+      const parts = key.split('.');
+      let val = dict;
+      for(const p of parts){ val = val?.[p]; if(val==null) break; }
+      if(typeof val === 'string') a.textContent = val;
+    });
+
+    // Footer
+    const f = root.querySelector('.foot-social h4');
+    if(f){ f.textContent = (dict.footer?.siguenos) || f.textContent; }
+    root.querySelectorAll('[data-i18n="footer.rights"]').forEach(e=>{
+      e.textContent = dict.footer?.rights || e.textContent;
+    });
+  }
+
+  /* ---------------- SPA: rutas ---------------- */
+  const routes = {
+    inicio:   'sections/inicio.html',
+    planes:   'sections/planes.html',
+    contacto: 'sections/contacto.html',
+    perfil:   'sections/perfil.html',
+    promos:   'sections/promos.html',
+    zonas:    'sections/zonas.html'
+  };
+
+  async function load(route, push=true){
+    const file = routes[route] || routes['inicio'];
+    try{
+      const res  = await fetch(file, {cache:'no-cache'});
+      const html = res.ok ? await res.text()
+        : `<div class="container placeholder"><h2>Error</h2><p>No se pudo cargar <code>${file}</code>.</p></div>`;
+      app.innerHTML = html;
+
+      // traducir header, sección y footer
+      applyI18n(document);
+      applyI18n(app);
+
+      setActive(route);
+      if(push) history.pushState({route}, '', '#'+route);
+      const chk = document.getElementById('nav-toggle'); if(chk) chk.checked = false;
+      window.scrollTo({top:0, behavior:'smooth'});
+
+      if(route === 'perfil') initPerfil();
+      if(route === 'zonas')  waitForLeaflet(initZonas);
+    }catch(e){
+      app.innerHTML = `<div class="container placeholder"><h2>Ups</h2><p>${e}</p></div>`;
+    }
+  }
+
+  function waitForLeaflet(cb, tries=0){
+    if (window.L && typeof L.map === 'function') { cb(); return; }
+    if (tries > 40) return;
+    setTimeout(()=> waitForLeaflet(cb, tries+1), 100);
+  }
+
+  function setActive(route){
+    NAV.querySelectorAll('a').forEach(a=>{
+      a.classList.toggle('active', a.dataset.route === route);
+    });
+  }
+
+  document.addEventListener('click', (e)=>{
+    const a = e.target.closest('a[data-route]');
+    if(!a) return;
+    const route = a.dataset.route;
+    if(routes[route]){
+      e.preventDefault();
+      load(route, true);
+    }
+  });
+
+  window.addEventListener('popstate', ()=>{
+    const route = (location.hash || '#inicio').slice(1);
+    load(route, false);
+  });
+
+  // cambio de idioma
+  LANG?.addEventListener('change', ()=>{
+    state.lang = LANG.value || 'es';
+    document.documentElement.lang = state.lang;
+    localStorage.setItem('lang', state.lang);
+    applyI18n(document);
+    applyI18n(app);
+  });
+
+  // Año + arranque
+  document.getElementById('y').textContent = new Date().getFullYear();
+  if(!location.hash) location.hash = '#inicio';
+  load((location.hash || '#inicio').slice(1), false);
+
+  /* ======= PERFIL ======= */
+  function initPerfil(){
+    const $ = (sel) => app.querySelector(sel);
+    const bio         = $('#bio');
+    const fileBanner  = $('#fileBanner');
+    const bannerPrev  = $('#bannerPreview');
+
+    const btnUpload   = $('#btnUpload');
+    const btnRemove   = $('#btnRemoveImg');
+    const btnEdit     = $('#btnEdit');
+    const btnSave     = $('#btnSave');
+    const btnDelete   = $('#btnDelete');
+    const btnBackTop  = app.querySelector('.back-btn');
+    const btnGoBack   = $('#btnGoBack');
+    const btnPlus     = $('#btnPlus');
+
+    if(bio) bio.value = localStorage.getItem('perfil.bio') || '';
+    const imgData = localStorage.getItem('perfil.banner');
+    if(bannerPrev){
+      if(imgData){ bannerPrev.src = imgData; } else { bannerPrev.removeAttribute('src'); }
+    }
+
+    btnUpload?.addEventListener('click', ()=> fileBanner?.click());
+    fileBanner?.addEventListener('change', (e)=>{
+      const file = e.target.files?.[0]; if(!file) return;
+      const reader = new FileReader();
+      reader.onload = ()=>{
+        if(bannerPrev){
+          bannerPrev.src = reader.result;
+          localStorage.setItem('perfil.banner', reader.result);
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+
+    btnRemove?.addEventListener('click', ()=>{
+      bannerPrev?.removeAttribute('src');
+      if(fileBanner) fileBanner.value = '';
+      localStorage.removeItem('perfil.banner');
+    });
+
+    btnEdit?.addEventListener('click', ()=>{ bio?.removeAttribute('readonly'); bio?.focus(); });
+    btnSave?.addEventListener('click', ()=>{
+      if(bio){
+        localStorage.setItem('perfil.bio', bio.value.trim());
+        bio.setAttribute('readonly','readonly');
+      }
+    });
+    btnDelete?.addEventListener('click', ()=>{
+      if(bio){
+        bio.value = '';
+        localStorage.removeItem('perfil.bio');
+        bio.setAttribute('readonly','readonly');
+      }
+    });
+
+    const goBack = ()=> history.back();
+    btnBackTop?.addEventListener('click', goBack);
+    btnGoBack?.addEventListener('click', goBack);
+
+    btnPlus?.addEventListener('click', ()=>{ bio?.removeAttribute('readonly'); bio?.focus(); });
+
+    applyI18n(app);
+  }
+
+  /* ======= ZONAS ======= */
+  function initZonas(){
+    const $   = (sel) => app.querySelector(sel);
+    const mapEl       = $('#mapZonas');
+    const resultsUl   = $('#resultsList');
+    const chipsWrap   = $('#zonesChips');
+    const inputSearch = $('#zonesSearch');
+    const countEl     = $('#zonesCount');
+    const backBtn     = app.querySelector('.back-btn');
+    if(!mapEl) return;
+
+    const data = [
+      { id:1, name:'El Forastero',      cat:'pollo',    lat:-12.0530, lng:-77.0380 },
+      { id:2, name:'La Picantería',     cat:'criolla',  lat:-12.0632, lng:-77.0278 },
+      { id:3, name:'Cevichería Marina', cat:'mariscos', lat:-12.0476, lng:-77.0339 },
+      { id:4, name:'Pollos Don Pepe',   cat:'pollo',    lat:-12.0510, lng:-77.0411 },
+      { id:5, name:'Antojos Criollos',  cat:'criolla',  lat:-12.0455, lng:-77.0502 },
+      { id:6, name:'Dulce Sazón',       cat:'postres',  lat:-12.0439, lng:-77.0374 },
+    ];
+
+    const map = L.map(mapEl, { zoomControl:true, attributionControl:true });
+    L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      { attribution: '&copy; Esri & contributors' }
+    ).addTo(map);
+
+    const defaultPos = [-12.0464, -77.0428];
+    map.setView(defaultPos, 15);
+
+    if('geolocation' in navigator){
+      navigator.geolocation.getCurrentPosition(
+        ({coords})=>{
+          const pos = [coords.latitude, coords.longitude];
+          map.setView(pos, 16);
+          L.circleMarker(pos,{radius:6,color:'#0ea5e9'}).addTo(map).bindPopup('Estás aquí');
+        }, ()=>{}
+      );
+    }
+
+    const markerLayer = L.layerGroup().addTo(map);
+    const markersById = new Map();
+    let state = { term:'', cat:'all' };
+
+    const normalize = (s)=> (s||'').toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,'');
+
+    function applyFilter(){
+      const t = normalize(state.term);
+      return data.filter(d=>{
+        const byCat  = state.cat==='all' ? true : d.cat===state.cat;
+        const byTerm = !t || normalize(d.name).includes(t) || normalize(d.cat).includes(t);
+        return byCat && byTerm;
+      });
+    }
+
+    function render(){
+      markerLayer.clearLayers();
+      markersById.clear();
+
+      const filtered = applyFilter();
+      if(countEl) countEl.textContent = filtered.length;
+
+      if(resultsUl){
+        resultsUl.innerHTML = '';
+        filtered.forEach(d=>{
+          const li = document.createElement('li');
+          li.innerHTML = `<span class="title">${d.name}</span><span class="tag">${d.cat}</span>`;
+          li.addEventListener('click', ()=>{
+            const m = markersById.get(d.id);
+            if(m){ map.setView([d.lat,d.lng], 17); m.openPopup(); }
+          });
+          resultsUl.appendChild(li);
+        });
+      }
+
+      const bounds = [];
+      filtered.forEach(d=>{
+        const m = L.marker([d.lat, d.lng]).addTo(markerLayer)
+                  .bindPopup(`<strong>${d.name}</strong><br><small>${d.cat}</small>`);
+        markersById.set(d.id, m);
+        bounds.push([d.lat, d.lng]);
+      });
+      if(bounds.length) map.fitBounds(bounds, {padding:[20,20]});
+
+      setTimeout(()=> map.invalidateSize(), 150);
+    }
+
+    chipsWrap?.addEventListener('click',(e)=>{
+      const chip = e.target.closest('.chip');
+      if(!chip) return;
+      chipsWrap.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active', c===chip));
+      state.cat = chip.dataset.cat;
+      render();
+    });
+
+    let tId;
+    inputSearch?.addEventListener('input',(e)=>{
+      clearTimeout(tId);
+      tId = setTimeout(()=>{ state.term = e.target.value.trim(); render(); }, 150);
+    });
+
+    backBtn?.addEventListener('click', ()=> history.back());
+
+    render();
+
+    applyI18n(app);
+  }
+
+})();
+</script>
+</body>
+</html>
