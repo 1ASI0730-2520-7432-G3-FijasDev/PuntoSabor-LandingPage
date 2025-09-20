@@ -66,27 +66,80 @@ header{
 .price-card.featured .plan-list{color:#fff;}
 .price-card.featured .plan-list.light li{list-style:disc;}
 
-/* ======= Contacto ======= */
+/* ======= Contáctanos (fondo verde + card mock) ======= */
 #contacto{background:var(--ps-green);padding:3rem 0;}
-.contact-card{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start;background:#fff;border-radius:18px;box-shadow:0 16px 40px rgba(0,0,0,.12);padding:18px;}
-.contact-form.dark{background:var(--ps-brown);color:#fff;border-radius:18px;padding:22px;}
-.contact-form.dark h3{margin:0 0 12px;font-size:2rem;}
-.contact-form.dark label{display:block;margin:10px 0 6px;}
-.contact-form.dark input,.contact-form.dark textarea{
-  width:100%;border:0;background:#d78c3b;
-  color:#1f2937;border-radius:10px;padding:10px 12px;font:inherit;
+#contacto .section-head{
+  font-family:"Pacifico", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: clamp(44px, 6vw, 70px);
+  color:#8c3a1d;
+  margin: 22px 0 26px;
 }
-.contact-form.dark textarea{min-height:140px;resize:vertical;}
-.contact-form.dark .checkbox{display:flex;align-items:center;gap:8px;margin:8px 0 12px;}
-.contact-side{background:#fff;border-radius:18px;padding:12px;}
-.contact-map{
-  height:220px;border-radius:12px;margin:10px 0 12px;overflow:hidden;
-  position:relative;z-index:0;  /* por si acaso */
+#contacto .container{ max-width:1100px; }
+
+.contact-card{
+  display:grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap:0;
+  padding:0;
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 12px 28px rgba(0,0,0,.12);
+  overflow:hidden;
+  margin:0 auto;
 }
 
-/* Leaflet: asegurar que no tape el header */
-.leaflet-container{z-index:1 !important;}
-.leaflet-control-container{z-index:2 !important;}
+/* panel izquierdo (form marrón) */
+.contact-form.dark{
+  background:#6b3e2e;
+  color:#fff;
+  padding:32px 28px;
+  border-radius:0;
+}
+.contact-form.dark h3{ font-size:2.2rem; margin:0 0 18px; line-height:1.1; }
+.contact-form.dark label{ display:block; font-weight:700; margin:14px 0 8px; }
+
+.contact-form.dark input,
+.contact-form.dark textarea{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:14px 12px;
+  background:#db843b;
+  color:#fff;
+  outline:2px solid transparent;
+  transition:outline-color .15s ease, background .15s ease;
+}
+.contact-form.dark textarea{ min-height:160px; resize:vertical; }
+.contact-form.dark input::placeholder,
+.contact-form.dark textarea::placeholder{ color:#fffdf2; opacity:.9; }
+.contact-form.dark input:focus,
+.contact-form.dark textarea:focus{ outline-color:#ffd9a3; background:#d27a2f; }
+
+.contact-form.dark .checkbox{ display:flex; align-items:center; gap:.55rem; margin:12px 0 14px; }
+.contact-form.dark .btn.primary{
+  background:#f7b35a; color:#4a2a17;
+  border:none; border-radius:10px; padding:11px 18px; font-weight:800;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+.contact-form.dark .btn.primary:hover{ filter:brightness(.96); }
+
+/* panel derecho (mapa + info) */
+.contact-side{ background:#fff; padding:24px 24px 20px; }
+.contact-map{
+  height:260px;
+  border-radius:12px;
+  overflow:hidden;
+  margin:12px 0 16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.contact-address p{ margin:6px 0; display:flex; align-items:center; gap:.5rem; }
+.contact-address p:nth-child(1)::before{ content:"📍"; }
+.contact-address p:nth-child(2)::before{ content:"📞"; }
+.contact-address p:nth-child(3)::before{ content:"✉️"; }
+
+/* Leaflet por debajo del header */
+.leaflet-container{ z-index:1 !important; }
+.leaflet-control-container{ z-index:2 !important; }
 
 /* ======= Perfil (sin imagen) ======= */
 .profile{background:var(--ps-green);padding:3rem 0;}
