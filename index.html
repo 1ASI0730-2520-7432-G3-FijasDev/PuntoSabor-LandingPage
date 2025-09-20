@@ -26,9 +26,9 @@
         <img src="img/LogoPuntoSabor.png" alt="PuntoSabor" height="70">
       </a>
 
-      <nav class="menu">
+      <nav class="menu" aria-label="Secciones del sitio">
         <ul>
-          <li><a class="active" href="#inicio" data-i18n="nav.home">Inicio</a></li>
+          <li><a class="active" href="#inicio" data-i18n="nav.home" aria-current="page">Inicio</a></li>
           <li><a href="#planes" data-i18n="nav.plans">Planes</a></li>
           <li><a href="#contacto" data-i18n="nav.contact">Contáctanos</a></li>
           <li><a href="#perfil" data-i18n="nav.profile">Perfil</a></li>
@@ -116,7 +116,6 @@
       <h2 class="title section-head" data-i18n="contact.title">Contáctanos</h2>
 
       <div class="contact-card">
-        <!-- Columna izquierda: formulario oscuro -->
         <form class="contact-form dark" onsubmit="event.preventDefault();alert(currentLang==='en'?'Message sent!':'¡Mensaje enviado!');">
           <h3 data-i18n="contact.cta">Ponte en contacto</h3>
 
@@ -134,7 +133,6 @@
           <button class="btn primary" type="submit" data-i18n="contact.send">Enviar</button>
         </form>
 
-        <!-- Columna derecha: texto + mapa + datos -->
         <aside class="contact-side">
           <p data-i18n="contact.blurb">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
           <div id="map" class="contact-map" aria-label="Mapa de ubicación"></div>
@@ -257,13 +255,47 @@
 
   <!-- ======= JS ======= -->
   <script>
-    // --- Scroll suave fallback ---
+    // --- Scroll suave ---
     document.addEventListener('click', function(e){
       if (e.target.matches('a[href^="#"]')) {
         const target = document.querySelector(e.target.getAttribute('href'));
         if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
       }
     });
+
+    // --- ScrollSpy ---
+    (function scrollSpy(){
+      const navLinks = Array.from(document.querySelectorAll('.menu a[href^="#"]'));
+      const sections = navLinks
+        .map(a => a.getAttribute('href').slice(1))
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+      const linkById = Object.fromEntries(
+        navLinks.map(a => [a.getAttribute('href').slice(1), a])
+      );
+
+      function setActive(id){
+        navLinks.forEach(a => {
+          const active = a.getAttribute('href') === '#' + id;
+          a.classList.toggle('active', active);
+          if (active) a.setAttribute('aria-current','page');
+          else a.removeAttribute('aria-current');
+        });
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 0.25, 0.5, 1] });
+
+      sections.forEach(sec => observer.observe(sec));
+      window.addEventListener('load', () => {
+        const id = location.hash.replace('#','') || 'inicio';
+        if (linkById[id]) setActive(id);
+      });
+    })();
 
     // --- Datos de huariques ---
     const HUARIQUES = {
@@ -326,13 +358,11 @@
         $info.innerHTML = `<strong>${d.nombre}</strong><br>${d.direccion}`;
       }
 
-      // Click en lista
       $list.addEventListener('click', (e) => {
         const li = e.target.closest('li[data-id]'); if (!li) return;
         focusPlace(li.dataset.id);
       });
 
-      // Chips: filtrar
       $chips.addEventListener('click', (e) => {
         const btn = e.target.closest('.chip'); if (!btn) return;
         [...$chips.querySelectorAll('.chip')].forEach(b => b.classList.remove('active'));
@@ -340,7 +370,6 @@
         filterList();
       });
 
-      // Buscar por texto
       $search.addEventListener('input', filterList);
 
       function filterList(){
@@ -353,13 +382,12 @@
         });
       }
 
-      // Seleccionar primero por defecto
       const first = $list.querySelector('li[data-id]');
       if (first) focusPlace(first.dataset.id);
     }
     setupZones();
 
-    // Botón "Buscar restaurant": baja a zonas y centra primero
+    // Botón "Buscar restaurant"
     document.getElementById('btnBuscar').addEventListener('click', () => {
       const zonas = document.getElementById('zonas');
       zonas.scrollIntoView({ behavior:'smooth' });
