@@ -66,7 +66,7 @@ header{
 .price-card.featured .plan-list{color:#fff;}
 .price-card.featured .plan-list.light li{list-style:disc;}
 
-/* ======= Contáctanos (fondo verde + card mock) ======= */
+/* ======= Contáctanos ======= */
 #contacto{background:var(--ps-green);padding:3rem 0;}
 #contacto .section-head{
   font-family:"Pacifico", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
