@@ -147,14 +147,35 @@ header{
 .profile-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
 .pill-btn{height:32px;padding:0 12px;border-radius:999px;border:1px solid #e5e7eb;background:#fff;cursor:pointer;font-weight:600;}
 .profile-grid.no-media{display:block;}
-.card.brown{background:var(--ps-brown);color:#fff;border-radius:20px;padding:18px;box-shadow:0 18px 45px rgba(0,0,0,.18);}
-.profile-text textarea{
-  width:100%;min-height:360px;background:#6b3e2e;
-  border:1px solid rgba(255,255,255,.15);border-radius:18px;color:#cbd5e1;
-  padding:16px;font:inherit;resize:vertical;
+.card.brown{background:var(--ps-brown);color:#fff;border-radius:20px;padding:24px 22px;box-shadow:0 18px 45px rgba(0,0,0,.18);}
+.profile-text{
+  display:flex;
+  flex-direction:column;
+  align-items:center;   /* centra todo dentro del card */
+  gap:16px;
 }
-.profile-text .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;}
-.profile-text .actions .btn{height:40px}
+.profile-text textarea{
+  width:90%;
+  max-width:800px;
+  min-height:220px;
+  background:#fff;
+  color:#333;
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:16px;
+  font:inherit;
+  line-height:1.4;
+  resize:vertical;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+.profile-text textarea::placeholder{color:#888;}
+.profile-text .actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:center; /* centra los botones también */
+}
+.profile-text .actions .btn{height:42px;}
 
 /* ======= Promos ======= */
 .promos{background:var(--ps-green);padding:3rem 0;}
@@ -192,7 +213,4 @@ header{
   .about-grid{grid-template-columns:1fr;}
   .contact-card{grid-template-columns:1fr;}
   .zones-split{grid-template-columns:1fr;}
-  
 }
- 
- 
