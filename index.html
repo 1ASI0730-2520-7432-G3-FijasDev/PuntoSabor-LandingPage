@@ -4,30 +4,38 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PuntoSabor</title>
+
+  <meta name="description" content="PuntoSabor: descubre huariques y apoya a emprendedores locales.">
+  <meta name="theme-color" content="#e6f1c9" />
   <link rel="icon" href="img/LogoPuntoSabor.png">
+
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
 
   <!-- ======= Header ======= -->
-  <header>
+  <header class="header" id="header">
     <div class="container nav">
       <div class="lang-select">
         <label class="sr-only" for="lang">Idioma</label>
         <select id="lang" aria-label="Seleccionar idioma">
-          <option value="es" selected>Español</option>
-          <option value="en">English</option>
+          <option value="es" selected>ES</option>
+          <option value="en">EN</option>
         </select>
       </div>
 
-      <a class="brand" href="#inicio" aria-label="Ir a Inicio">
-        <img src="img/LogoPuntoSabor.png" alt="PuntoSabor" height="70">
+      <a class="brand" href="#inicio" aria-label="Ir a inicio">
+        <img src="img/LogoPuntoSabor.png" alt="PuntoSabor" width="56" height="56" loading="lazy">
+        <strong>PuntoSabor</strong>
       </a>
 
-      <nav class="menu" aria-label="Secciones del sitio">
-        <ul>
+      <nav class="menu" aria-label="Barra principal">
+        <ul class="nav-list">
           <li><a class="active" href="#inicio" data-i18n="nav.home" aria-current="page">Inicio</a></li>
           <li><a href="#planes" data-i18n="nav.plans">Planes</a></li>
           <li><a href="#contacto" data-i18n="nav.contact">Contáctanos</a></li>
@@ -40,7 +48,7 @@
   </header>
 
   <!-- ======= ¿Quiénes somos? ======= -->
-  <section class="about" id="inicio">
+  <section class="about section section--vh" id="inicio">
     <div class="container">
       <h2 class="title section-head" data-i18n="about.title">¿Quiénes somos?</h2>
 
@@ -53,7 +61,7 @@
         </div>
 
         <div class="about-media">
-          <img src="img/slogoPuntoSabor.png" alt="Isotipo PuntoSabor">
+          <img src="img/slogoPuntoSabor.png" alt="Isotipo PuntoSabor" loading="lazy">
           <h3 class="brand-lockup">PuntoSabor</h3>
         </div>
       </div>
@@ -61,69 +69,91 @@
   </section>
 
   <!-- ======= Planes ======= -->
-  <section class="pricing" id="planes">
+  <section class="pricing section section--vh" id="planes">
     <div class="container">
       <h2 class="title section-head" data-i18n="plans.title">Nuestros planes</h2>
 
-      <div class="pricecards">
-        <!-- PREMIUM -->
-        <article class="price-card">
-          <header class="price-head white-bar">
-            <h3>PREMIUM</h3>
-            <p><strong>$35</strong> <span>/MES</span></p>
-          </header>
-          <ul class="plan-list">
-            <li>✓ <span data-i18n="plans.premium1">Todo lo del plan Básico</span></li>
-            <li>✓ <span data-i18n="plans.premium2">Herramientas de promoción destacada</span></li>
-            <li>✓ <span data-i18n="plans.premium3">Estadísticas de visitas y comentarios</span></li>
-            <li>✓ <span data-i18n="plans.premium4">Soporte técnico y asesoría</span></li>
-          </ul>
-        </article>
+<div class="pricecards" role="list" aria-label="Tabla comparativa de planes">
 
-        <!-- BÁSICO DESTACADO -->
-        <article class="price-card featured">
-          <header class="price-head white-bar">
-            <h3>BÁSICO</h3>
-            <p><strong data-i18n="plans.basicPrice">Gratis</strong></p>
-          </header>
-          <ul class="plan-list light">
-            <li>✓ <span data-i18n="plans.basic1">Publica tu huarique</span></li>
-            <li>✓ <span data-i18n="plans.basic2">Perfil con datos esenciales</span></li>
-            <li>✓ <span data-i18n="plans.basic3">Acceso a reseñas y calificaciones</span></li>
-          </ul>
-        </article>
+  <!-- PREMIUM -->
+  <article class="price-card" role="listitem" aria-label="Plan Premium">
+    <header class="price-head white-bar">
+      <h3 class="plan-title">PREMIUM</h3>
+      <p class="plan-price"><strong>$35</strong><span>/MES</span></p>
+    </header>
 
-        <!-- EXCLUSIVO -->
-        <article class="price-card">
-          <header class="price-head white-bar">
-            <h3>EXCLUSIVO</h3>
-            <p><strong>$50</strong> <span>/MES</span></p>
-          </header>
-          <ul class="plan-list">
-            <li>✓ <span data-i18n="plans.ex1">Todo lo del plan Premium</span></li>
-            <li>✓ <span data-i18n="plans.ex2">Publicidad prioritaria</span></li>
-            <li>✓ <span data-i18n="plans.ex3">Gestión avanzada de reseñas</span></li>
-            <li>✓ <span data-i18n="plans.ex4">Acceso a eventos especiales</span></li>
-          </ul>
-        </article>
-      </div>
+    <ul class="plan-list">
+      <li>Todo lo del plan Básico</li>
+      <li>Herramientas de promoción destacada</li>
+      <li>Estadísticas de visitas y comentarios</li>
+      <li>Soporte técnico y asesoría</li>
+    </ul>
+
+    <footer class="plan-cta">
+      <button class="btn primary" type="button">Elegir Premium</button>
+      <small>Ideal si ya tienes reseñas y buscas crecer</small>
+    </footer>
+  </article>
+
+  <!-- BÁSICO DESTACADO -->
+  <article class="price-card featured" role="listitem" aria-label="Plan Básico">
+    <div class="ribbon" aria-hidden="true">Popular</div>
+    <header class="price-head white-bar">
+      <h3 class="plan-title">BÁSICO</h3>
+      <p class="plan-price"><strong>Gratis</strong></p>
+    </header>
+
+    <ul class="plan-list">
+      <li>Publica tu huarique</li>
+      <li>Perfil con datos esenciales</li>
+      <li>Acceso a reseñas y calificaciones</li>
+    </ul>
+
+    <footer class="plan-cta">
+      <button class="btn light" type="button">Empezar gratis</button>
+      <small>Perfecto para empezar a tener visibilidad</small>
+    </footer>
+  </article>
+
+  <!-- EXCLUSIVO -->
+  <article class="price-card" role="listitem" aria-label="Plan Exclusivo">
+    <header class="price-head white-bar">
+      <h3 class="plan-title">EXCLUSIVO</h3>
+      <p class="plan-price"><strong>$50</strong><span>/MES</span></p>
+    </header>
+
+    <ul class="plan-list">
+      <li>Todo lo del plan Premium</li>
+      <li>Publicidad prioritaria</li>
+      <li>Gestión avanzada de reseñas</li>
+      <li>Acceso a eventos especiales</li>
+    </ul>
+
+    <footer class="plan-cta">
+      <button class="btn primary" type="button">Elegir Exclusivo</button>
+      <small>Para marcas que quieren destacar al máximo</small>
+    </footer>
+  </article>
+
+</div>
+
     </div>
   </section>
 
-<!-- ======= Contáctanos ======= -->
-  <section id="contacto">
+  <!-- ======= Contáctanos ======= -->
+  <section class="section section--vh" id="contacto">
     <div class="container">
       <h2 class="title section-head" data-i18n="contact.title">Contáctanos</h2>
 
       <div class="contact-card">
-        <form class="contact-form dark" onsubmit="event.preventDefault();alert(currentLang==='en'?'Message sent!':'¡Mensaje enviado!');">
+        <form class="contact-form dark" onsubmit="event.preventDefault();alert(currentLang==='en'?'Message sent!':'¡Mensaje enviado!');" aria-label="Formulario de contacto">
           <h3 data-i18n="contact.cta">Ponte en contacto</h3>
 
           <label for="name" data-i18n="contact.name">Nombre</label>
-          <input id="name" required placeholder="Tu nombre" data-i18n-placeholder="contact.namePh">
+          <input id="name" required placeholder="Tu nombre" data-i18n-placeholder="contact.namePh" autocomplete="name">
 
           <label for="email" data-i18n="contact.email">Correo electrónico</label>
-          <input id="email" type="email" required placeholder="tucorreo@ejemplo.com" data-i18n-placeholder="contact.emailPh">
+          <input id="email" type="email" required placeholder="tucorreo@ejemplo.com" data-i18n-placeholder="contact.emailPh" autocomplete="email">
 
           <label for="msg" data-i18n="contact.msg">Contenido</label>
           <textarea id="msg" required placeholder="Cuéntanos en qué podemos ayudarte" data-i18n-placeholder="contact.msgPh"></textarea>
@@ -134,112 +164,196 @@
         </form>
 
         <aside class="contact-side">
-       
-          <div id="map" class="contact-map" aria-label="Mapa de ubicación"></div>
+          
+       <div id="map-contact"
+     class="contact-map"
+     aria-label="Mapa de ubicación"
+     data-center="-12.0464,-77.0428"
+     data-zoom="15"></div>
 
+          
           <address class="contact-address">
             <p><strong>Lima, Perú</strong></p>
             <p>+51 963 179 684</p>
-            <p>PuntoSabor@gmail.com</p>
+            <p><a href="mailto:PuntoSabor@gmail.com">PuntoSabor@gmail.com</a></p>
           </address>
         </aside>
       </div>
     </div>
   </section>
 
+  <!-- ======= Perfil ======= -->
+ <section class="profile" id="perfil">
+  <div class="container">
+    <!-- Top bar -->
+    <div class="profile-top">
+      <button class="icon-btn back-btn" aria-label="Regresar" onclick="location.hash='#inicio'">←</button>
+      <button class="pill-btn" type="button">LOGO</button>
+    </div>
 
-  <!-- ======= Perfil (sin imagen) ======= -->
-  <section class="profile" id="perfil">
-    <div class="container">
-      <div class="profile-top">
-        <button class="icon-btn back-btn" aria-label="Regresar" onclick="location.hash='#inicio'">←</button>
-        <button class="pill-btn" type="button">LOGO</button>
-      </div>
+    <div class="profile-editor card brown">
+      <div class="editor-grid">
+        <!-- IZQUIERDA: descripción -->
+        <div class="editor-left">
+          <label for="bio" class="editor-title">Descripción del negocio</label>
+          <textarea id="bio" placeholder="Escribe aquí la descripción de tu negocio..."></textarea>
 
-      <div class="profile-grid no-media">
-        <div class="profile-text card brown">
-          <textarea id="bio" placeholder="Escribe aquí la descripción de tu negocio..."
-                    data-i18n-placeholder="profile.bioPh"></textarea>
-          <div class="actions">
-            <button class="btn ghost" type="button" data-i18n="profile.upload">Subir imagen</button>
-            <button class="btn ghost" type="button" data-i18n="profile.deleteImg">Borrar imagen</button>
-            <button class="btn ghost" type="button" data-i18n="profile.edit">Editar</button>
-            <button class="btn primary" type="button" data-i18n="profile.save">Guardar</button>
-            <button class="btn danger" type="button" data-i18n="profile.remove">Eliminar</button>
+          <div class="charcount">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="txt">0 / 600</span>
           </div>
-          <a class="btn back-ghost" href="#inicio" data-i18n="profile.back">REGRESAR</a>
+
+          <div class="actions">
+            <button type="button" class="btn ghost" id="btnUploadLeft">Subir imagen</button>
+            <button type="button" class="btn ghost" id="btnReplaceLeft">Reemplazar</button>
+            <button type="button" class="btn ghost" id="btnRemoveLeft">Borrar imagen</button>
+            <button type="button" class="btn ghost" id="btnEditLeft">Editar</button>
+
+            <button type="button" class="btn primary" id="btnSave">Guardar</button>
+            <a class="btn back-ghost" href="#inicio">REGRESAR</a>
+          </div>
+        </div>
+
+        <!-- DERECHA: imagen -->
+        <div class="editor-right">
+          <div class="image-panel" id="imagePanel">
+            <input id="fileInput" type="file" accept="image/*" class="sr-only" />
+            <div class="dropzone" id="dropzone">
+              <div class="dz-inner">
+                <strong>Arrastra una imagen</strong>
+                <span>o haz click para seleccionar</span>
+                <button class="btn ghost" type="button" id="btnUploadRight">Elegir archivo</button>
+              </div>
+            </div>
+
+            <div class="image-stage hidden" id="imageStage">
+              <div class="image-canvas">
+                <img id="previewImg" alt="Vista previa" />
+              </div>
+
+              <div class="image-toolbar">
+                <div class="tools-left">
+                  <button type="button" class="tool-btn" id="btnFitToggle" title="Ajustar/Cubrir">Ajustar</button>
+                  <button type="button" class="tool-btn" id="btnRotate" title="Rotar 90°">Rotar 90°</button>
+                </div>
+                <div class="tools-right">
+                  <button type="button" class="tool-btn danger" id="btnRemoveRight" title="Quitar">Quitar</button>
+                  <button type="button" class="tool-btn" id="btnReplaceRight" title="Reemplazar">Reemplazar</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ayuda -->
+            <p class="image-hint" id="imageHint">Formatos: JPG, PNG o WEBP (máx. ~10MB). Puedes arrastrar y soltar.</p>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ======= Promos ======= -->
-  <section class="promos" id="promos">
+  <section class="promos section section--vh" id="promos">
     <div class="container">
       <h2 class="title section-head" data-i18n="promos.title">Promociones</h2>
 
-      <div class="promos-hero">
-        <article class="promo-card">
-          <div class="promo-media"><img src="img/pollo.png" alt="Pollo a la brasa"></div>
-          <h3>POLLO A LA BRASA</h3>
-        </article>
+      <div class="promos-hero promos-row">
+      <article class="promo-card reveal" data-delay="0">
+        <div class="promo-media"><img src="img/pollo.png" alt="Pollo a la brasa"></div>
+        <h3>POLLO A LA BRASA</h3>
+      </article>
 
-        <div class="promo-plus">+</div>
+      <div class="promo-plus reveal" data-delay="80">+</div>
 
-        <article class="promo-card">
-          <div class="promo-media"><img src="img/arroz chaufa.png" alt="Arroz chaufa"></div>
-          <h3>ARROZ CHAUFA</h3>
-        </article>
+      <article class="promo-card reveal" data-delay="160">
+        <div class="promo-media"><img src="img/arroz chaufa.png" alt="Arroz chaufa"></div>
+        <h3>ARROZ CHAUFA</h3>
+      </article>
 
-        <div class="promo-plus">+</div>
+      <div class="promo-plus reveal" data-delay="240">+</div>
 
-        <article class="promo-card">
-          <div class="promo-media"><img src="img/Jarra de chicha.png" alt="Jarra de chicha morada"></div>
-          <h3>JARRA DE CHICHA MORADA</h3>
-        </article>
-      </div>
+      <article class="promo-card reveal" data-delay="320">
+        <div class="promo-media"><img src="img/Jarra de chicha.png" alt="Jarra de chicha morada"></div>
+        <h3>JARRA DE CHICHA MORADA</h3>
+      </article>
+    </div>
 
-      <div class="promos-cta">
-        <button id="btnBuscar" class="btn primary" type="button" data-i18n="promos.btn">Buscar restaurant</button>
+    <div class="promos-cta">
+      <button id="btnBuscar" class="btn primary" type="button">Buscar restaurant</button>
+    </div>
+  </div>
+</section>
+
+ <!-- ======= Zonas ======= -->
+<section class="zones section section--vh is-long" id="zonas">
+  <div class="container">
+    <h2 class="title section-head" data-i18n="zones.title">Huariques cerca de ti</h2>
+
+    <input id="zonesSearch"
+           type="search"
+           placeholder="Buscar en esta zona (ej. pollo, ceviche, postres)"
+           data-i18n-placeholder="zones.searchPh"
+           aria-label="Buscar en lista de huariques">
+
+    <!-- === Fila ÚNICA de categorías (con avatar) === -->
+
+<div id="zonesChips" class="chips chips--avatar" role="tablist" aria-label="Filtros por categoría">
+  <button class="chip chip--avatar active" data-cat="all" role="tab" aria-selected="true">
+    <span class="chip__label">Todos</span>
+  </button>
+
+  <button class="chip chip--avatar" data-cat="pollo" role="tab" aria-selected="false">
+    <span class="chip__avatar">
+      <img src="img/Pollo_seccion.jpg" alt="Pollo" loading="lazy">
+    </span>
+    <span class="chip__label">Pollo</span>
+  </button>
+
+  <button class="chip chip--avatar" data-cat="mariscos" role="tab" aria-selected="false">
+    <span class="chip__avatar">
+      <img src="img/Mariscos_seccion.jpg" alt="Mariscos" loading="lazy">
+    </span>
+    <span class="chip__label">Mariscos</span>
+  </button>
+
+  <button class="chip chip--avatar" data-cat="criolla" role="tab" aria-selected="false">
+    <span class="chip__avatar">
+      <img src="img/Criolla_seccion.jpg" alt="Criolla" loading="lazy">
+    </span>
+    <span class="chip__label">Criolla</span>
+  </button>
+
+  <button class="chip chip--avatar" data-cat="postres" role="tab" aria-selected="false">
+    <span class="chip__avatar">
+      <img src="img/Postres_seccion.jpg" alt="Postres" loading="lazy">
+    </span>
+    <span class="chip__label">Postres</span>
+  </button>
+</div>
+
+    <!-- === /Fila ÚNICA de categorías === -->
+
+    <div class="zones-split">
+<ul class="zones-list" id="zonesList">
+  <li data-id="forastero"  data-cat="pollo"><span>El Forastero</span></li>
+  <li data-id="picanteria" data-cat="criolla"><span>La Picantería</span></li>
+  <li data-id="marina"     data-cat="mariscos"><span>Cevichería Marina</span></li>
+  <li data-id="donpepe"    data-cat="pollo"><span>Pollos Don Pepe</span></li>
+  <li data-id="antojitos"  data-cat="criolla"><span>Antojos Criollos</span></li>
+  <li data-id="dulcesazon" data-cat="postres"><span>Dulce Sazón</span></li>
+</ul>
+
+
+      <div class="zones-map-wrap">
+        <div id="map-zones" class="zones-map" aria-label="Mapa con huariques"></div>
+        <div id="zone-selected" class="zone-selected" aria-live="polite"></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ======= Zonas ======= -->
-  <section class="zones" id="zonas">
-    <div class="container">
-      <h2 class="title section-head" data-i18n="zones.title">Huariques cerca de ti</h2>
 
-      <input id="zonesSearch" type="search" placeholder="Buscar en esta zona (ej. pollo, ceviche, postres)"
-             data-i18n-placeholder="zones.searchPh">
 
-      <div class="chips" id="zonesChips">
-        <button class="chip active" data-cat="all" data-i18n="zones.all">Todos</button>
-        <button class="chip" data-cat="pollo" data-i18n="zones.chicken">Pollo</button>
-        <button class="chip" data-cat="mariscos" data-i18n="zones.seafood">Mariscos</button>
-        <button class="chip" data-cat="criolla" data-i18n="zones.criolla">Criolla</button>
-        <button class="chip" data-cat="postres" data-i18n="zones.dessert">Postres</button>
-      </div>
-
-      <div class="zones-split">
-        <ul class="zones-list" id="zonesList">
-          <li data-id="forastero" data-cat="pollo"><span>El Forastero</span><em>pollo</em></li>
-          <li data-id="picanteria" data-cat="criolla"><span>La Picantería</span><em>criolla</em></li>
-          <li data-id="marina" data-cat="mariscos"><span>Cevichería Marina</span><em>mariscos</em></li>
-          <li data-id="donpepe" data-cat="pollo"><span>Pollos Don Pepe</span><em>pollo</em></li>
-          <li data-id="antojitos" data-cat="criolla"><span>Antojos Criollos</span><em>criolla</em></li>
-          <li data-id="dulcesazon" data-cat="postres"><span>Dulce Sazón</span><em>postres</em></li>
-        </ul>
-
-        <div class="zones-map-wrap">
-          <div id="map-zones" class="zones-map" aria-label="Mapa con huariques"></div>
-          <div id="zone-selected" class="zone-selected" aria-live="polite"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  
   <!-- ======= Footer ======= -->
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -255,187 +369,355 @@
     </div>
   </footer>
 
-  <!-- ======= JS ======= -->
-  <script>
-    // --- Scroll suave ---
-    document.addEventListener('click', function(e){
-      if (e.target.matches('a[href^="#"]')) {
-        const target = document.querySelector(e.target.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
-      }
+<!-- ======= JS ======= -->
+
+
+<script>
+/* =========================================================
+   Núcleo: i18n, scroll suave y ScrollSpy básico
+   ========================================================= */
+(function(){
+  'use strict';
+
+  const I18N = {
+    es: {
+      "nav.home":"Inicio","nav.plans":"Planes","nav.contact":"Contáctanos","nav.profile":"Perfil","nav.promos":"Promociones","nav.zones":"Zonas",
+      "about.title":"¿Quiénes somos?","about.p1":"En PuntoSabor creemos que la verdadera riqueza gastronómica está en los huariques: esos rincones de comida casera, tradicional y auténtica que muchas veces pasan desapercibidos.","about.p2":"Nuestra plataforma nace con el propósito de dar visibilidad digital a estos pequeños negocios, conectando a los usuarios con experiencias culinarias únicas y accesibles.","about.p3":"Queremos que cada persona pueda descubrir, valorar y recomendar nuevos sabores, mientras apoyamos a los emprendedores locales a crecer con herramientas tecnológicas y planes diseñados para sus necesidades.","about.p4":"Más que una app, somos una comunidad gastronómica que celebra la diversidad, la tradición y la pasión por la buena comida.",
+      "plans.title":"Nuestros planes","plans.basicPrice":"Gratis","plans.basic1":"Publica tu huarique","plans.basic2":"Perfil con datos esenciales","plans.basic3":"Acceso a reseñas y calificaciones","plans.premium1":"Todo lo del plan Básico","plans.premium2":"Herramientas de promoción destacada","plans.premium3":"Estadísticas de visitas y comentarios","plans.premium4":"Soporte técnico y asesoría","plans.ex1":"Todo lo del plan Premium","plans.ex2":"Publicidad prioritaria","plans.ex3":"Gestión avanzada de reseñas","plans.ex4":"Acceso a eventos especiales",
+      "contact.title":"Contáctanos","contact.cta":"Ponte en contacto","contact.name":"Nombre","contact.namePh":"Tu nombre","contact.email":"Correo electrónico","contact.emailPh":"tucorreo@ejemplo.com","contact.msg":"Contenido","contact.msgPh":"Cuéntanos en qué podemos ayudarte","contact.newsletter":"Me gustaría recibir el boletín.","contact.send":"Enviar",
+      "profile.bioPh":"Escribe aquí la descripción de tu negocio...","profile.upload":"Subir imagen","profile.deleteImg":"Borrar imagen","profile.edit":"Editar","profile.save":"Guardar","profile.remove":"Eliminar","profile.back":"REGRESAR",
+      "promos.title":"Promociones","promos.btn":"Buscar restaurant",
+      "zones.title":"Huariques cerca de ti","zones.searchPh":"Buscar en esta zona (ej. pollo, ceviche, postres)","zones.all":"Todos","zones.chicken":"Pollo","zones.seafood":"Mariscos","zones.criolla":"Criolla","zones.dessert":"Postres"
+    }
+  };
+
+  const LANG = 'es';
+  function applyI18n(){
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k = el.getAttribute('data-i18n');
+      if (I18N[LANG][k]) el.textContent = I18N[LANG][k];
     });
-
-    // --- ScrollSpy ---
-    (function scrollSpy(){
-      const navLinks = Array.from(document.querySelectorAll('.menu a[href^="#"]'));
-      const sections = navLinks
-        .map(a => a.getAttribute('href').slice(1))
-        .map(id => document.getElementById(id))
-        .filter(Boolean);
-
-      const linkById = Object.fromEntries(
-        navLinks.map(a => [a.getAttribute('href').slice(1), a])
-      );
-
-      function setActive(id){
-        navLinks.forEach(a => {
-          const active = a.getAttribute('href') === '#' + id;
-          a.classList.toggle('active', active);
-          if (active) a.setAttribute('aria-current','page');
-          else a.removeAttribute('aria-current');
-        });
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 0.25, 0.5, 1] });
-
-      sections.forEach(sec => observer.observe(sec));
-      window.addEventListener('load', () => {
-        const id = location.hash.replace('#','') || 'inicio';
-        if (linkById[id]) setActive(id);
-      });
-    })();
-
-    // --- Datos de huariques ---
-    const HUARIQUES = {
-      forastero: { nombre:'El Forastero',      coords:[-12.059, -77.037], direccion:'Av. Los Héroes 123, Lima' },
-      picanteria:{ nombre:'La Picantería',     coords:[-12.062, -77.030], direccion:'Jr. Tradición 456, Lima' },
-      marina:    { nombre:'Cevichería Marina', coords:[-12.050, -77.040], direccion:'Malecón Norte 789, Lima' },
-      donpepe:   { nombre:'Pollos Don Pepe',   coords:[-12.070, -77.020], direccion:'Av. del Sabor 321, Lima' },
-      antojitos: { nombre:'Antojos Criollos',  coords:[-12.055, -77.048], direccion:'Calle Cusqueña 654, Lima' },
-      dulcesazon:{ nombre:'Dulce Sazón',       coords:[-12.044, -77.035], direccion:'Pasaje Postres 987, Lima' }
-    };
-
-    // --- Leaflet helper ---
-    function initLeaflet(id, {satellite=false, center=[-12.0464,-77.0428], zoom=13, markers=[]} = {}){
-      if (!document.getElementById(id)) return null;
-      function boot(){
-        const map = L.map(id, { zoomControl: true }).setView(center, zoom);
-        const tiles = satellite
-          ? L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {maxZoom: 19, attribution:'&copy; Esri'})
-          : L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution:'&copy; OpenStreetMap'});
-        tiles.addTo(map);
-        const markerMap = {};
-        markers.forEach(m => {
-          const mk = L.marker(m.coords).addTo(map).bindPopup(`<strong>${m.nombre}</strong>`);
-          markerMap[m.id] = mk;
-        });
-        return { map, markerMap };
-      }
-      if (window.L) return boot();
-      const s = document.createElement('script');
-      s.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
-      s.integrity = "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=";
-      s.crossOrigin = "";
-      s.onload = boot;
-      document.body.appendChild(s);
-      return null;
-    }
-
-    // Contacto map
-    initLeaflet('map', { satellite:true, center:[-12.0464, -77.0428], zoom:12 });
-
-    // Zonas map + interacciones
-    const markersData = Object.entries(HUARIQUES).map(([id,v]) => ({ id, nombre:v.nombre, coords:v.coords }));
-    let zonesCtx = null;
-
-    function setupZones(){
-      const res = initLeaflet('map-zones', { satellite:true, center:[-12.053, -77.036], zoom:14, markers: markersData });
-      if (!res || !res.map) { setTimeout(setupZones, 120); return; }
-      const { map, markerMap } = res;
-      zonesCtx = { map, markerMap };
-
-      const $info = document.getElementById('zone-selected');
-      const $list = document.getElementById('zonesList');
-      const $chips = document.getElementById('zonesChips');
-      const $search = document.getElementById('zonesSearch');
-
-      function focusPlace(id){
-        const d = HUARIQUES[id]; if (!d) return;
-        const mk = markerMap[id];
-        if (mk) { map.setView(d.coords, 16); mk.openPopup(); }
-        $info.innerHTML = `<strong>${d.nombre}</strong><br>${d.direccion}`;
-      }
-
-      $list.addEventListener('click', (e) => {
-        const li = e.target.closest('li[data-id]'); if (!li) return;
-        focusPlace(li.dataset.id);
-      });
-
-      $chips.addEventListener('click', (e) => {
-        const btn = e.target.closest('.chip'); if (!btn) return;
-        [...$chips.querySelectorAll('.chip')].forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        filterList();
-      });
-
-      $search.addEventListener('input', filterList);
-
-      function filterList(){
-        const cat = $chips.querySelector('.chip.active')?.dataset.cat || 'all';
-        const q = $search.value.toLowerCase().trim();
-        $list.querySelectorAll('li').forEach(li => {
-          const matchCat = (cat==='all') || (li.dataset.cat === cat);
-          const matchTxt = li.textContent.toLowerCase().includes(q);
-          li.style.display = (matchCat && matchTxt) ? '' : 'none';
-        });
-      }
-
-      const first = $list.querySelector('li[data-id]');
-      if (first) focusPlace(first.dataset.id);
-    }
-    setupZones();
-
-    // Botón "Buscar restaurant"
-    document.getElementById('btnBuscar').addEventListener('click', () => {
-      const zonas = document.getElementById('zonas');
-      zonas.scrollIntoView({ behavior:'smooth' });
-      setTimeout(() => {
-        const first = document.querySelector('#zonesList li[data-id]');
-        if (first) first.click();
-      }, 500);
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+      const k = el.getAttribute('data-i18n-placeholder');
+      if (I18N[LANG][k]) el.setAttribute('placeholder', I18N[LANG][k]);
     });
+  }
+  applyI18n();
 
-    // --- I18N simple ---
-    const i18n = {
-      es: {
-        "nav.home":"Inicio","nav.plans":"Planes","nav.contact":"Contáctanos","nav.profile":"Perfil","nav.promos":"Promociones","nav.zones":"Zonas",
-        "about.title":"¿Quiénes somos?","about.p1":"En PuntoSabor creemos que la verdadera riqueza gastronómica está en los huariques: esos rincones de comida casera, tradicional y auténtica que muchas veces pasan desapercibidos.","about.p2":"Nuestra plataforma nace con el propósito de dar visibilidad digital a estos pequeños negocios, conectando a los usuarios con experiencias culinarias únicas y accesibles.","about.p3":"Queremos que cada persona pueda descubrir, valorar y recomendar nuevos sabores, mientras apoyamos a los emprendedores locales a crecer con herramientas tecnológicas y planes diseñados para sus necesidades.","about.p4":"Más que una app, somos una comunidad gastronómica que celebra la diversidad, la tradición y la pasión por la buena comida.",
-        "plans.title":"Nuestros planes","plans.basicPrice":"Gratis","plans.basic1":"Publica tu huarique","plans.basic2":"Perfil con datos esenciales","plans.basic3":"Acceso a reseñas y calificaciones","plans.premium1":"Todo lo del plan Básico","plans.premium2":"Herramientas de promoción destacada","plans.premium3":"Estadísticas de visitas y comentarios","plans.premium4":"Soporte técnico y asesoría","plans.ex1":"Todo lo del plan Premium","plans.ex2":"Publicidad prioritaria","plans.ex3":"Gestión avanzada de reseñas","plans.ex4":"Acceso a eventos especiales",
-        "contact.title":"Contáctanos","contact.cta":"Ponte en contacto","contact.name":"Nombre","contact.namePh":"Tu nombre","contact.email":"Correo electrónico","contact.emailPh":"tucorreo@ejemplo.com","contact.msg":"Contenido","contact.msgPh":"Cuéntanos en qué podemos ayudarte","contact.newsletter":"Me gustaría recibir el boletín.","contact.send":"Enviar","contact.blurb":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-        "profile.bioPh":"Escribe aquí la descripción de tu negocio...","profile.upload":"Subir imagen","profile.deleteImg":"Borrar imagen","profile.edit":"Editar","profile.save":"Guardar","profile.remove":"Eliminar","profile.back":"REGRESAR",
-        "promos.title":"Promociones","promos.btn":"Buscar restaurant",
-        "zones.title":"Huariques cerca de ti","zones.searchPh":"Buscar en esta zona (ej. pollo, ceviche, postres)","zones.all":"Todos","zones.chicken":"Pollo","zones.seafood":"Mariscos","zones.criolla":"Criolla","zones.dessert":"Postres"
-      },
-      en: {
-        "nav.home":"Home","nav.plans":"Plans","nav.contact":"Contact us","nav.profile":"Profile","nav.promos":"Promotions","nav.zones":"Areas",
-        "about.title":"Who we are","about.p1":"At PuntoSabor we believe the true culinary richness lives in the huariques—authentic, homemade spots often overlooked.","about.p2":"Our platform brings digital visibility to these small businesses, connecting people with unique and accessible food experiences.","about.p3":"We help users discover and support local entrepreneurs with tech tools and tailored plans.","about.p4":"More than an app, we're a food community celebrating diversity, tradition and passion.",
-        "plans.title":"Our plans","plans.basicPrice":"Free","plans.basic1":"Publish your huarique","plans.basic2":"Profile with essential details","plans.basic3":"Access to reviews and ratings","plans.premium1":"Everything in Basic","plans.premium2":"Featured promotion tools","plans.premium3":"Visit & comments analytics","plans.premium4":"Technical support & advising","plans.ex1":"Everything in Premium","plans.ex2":"Priority advertising","plans.ex3":"Advanced review management","plans.ex4":"Access to special events",
-        "contact.title":"Contact us","contact.cta":"Get in touch","contact.name":"Name","contact.namePh":"Your name","contact.email":"Email","contact.emailPh":"you@example.com","contact.msg":"Message","contact.msgPh":"Tell us how we can help","contact.newsletter":"I would like to receive the newsletter.","contact.send":"Send","contact.blurb":"",
-        "profile.bioPh":"Write your business description here...","profile.upload":"Upload image","profile.deleteImg":"Delete image","profile.edit":"Edit","profile.save":"Save","profile.remove":"Remove","profile.back":"BACK",
-        "promos.title":"Promotions","promos.btn":"Find restaurant",
-        "zones.title":"Huariques near you","zones.searchPh":"Search this area (e.g., chicken, ceviche, desserts)","zones.all":"All","zones.chicken":"Chicken","zones.seafood":"Seafood","zones.criolla":"Criolla","zones.dessert":"Desserts"
-      }
+  // Scroll suave
+  document.addEventListener('click', (e)=>{
+    const a = e.target.closest('.menu a[href^="#"], a[href^="#"]');
+    if (!a) return;
+    const t = document.querySelector(a.getAttribute('href'));
+    if (!t) return;
+    e.preventDefault();
+    t.scrollIntoView({behavior:'smooth'});
+  });
+
+  // ScrollSpy simple
+  const navLinks = Array.from(document.querySelectorAll('.menu a[href^="#"]'));
+  const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function setActive(id){
+    navLinks.forEach(a=>{
+      const on = a.getAttribute('href') === '#'+id;
+      a.classList.toggle('active', on);
+      if (on) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+  }
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en => { if (en.isIntersecting) setActive(en.target.id); });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold:[0,.25,.5,1] });
+    sections.forEach(s => io.observe(s));
+  }
+})();
+</script>
+
+<script>
+/* =========================================================
+   Perfil: textarea autosize + contador, subida/edición de imagen
+   ========================================================= */
+(function(){
+  'use strict';
+  const ta = document.getElementById('bio');
+  const MAX = 600;
+  const saveBtn = document.querySelector('[data-i18n="profile.save"], #btnSave');
+
+  if (ta){
+    const cc = document.createElement('div');
+    cc.className = 'charcount';
+    cc.innerHTML = '<span class="dot" aria-hidden="true"></span><span class="txt">0 / '+MAX+'</span>';
+    const wrap = ta.closest('.profile-text'); wrap && wrap.appendChild(cc);
+
+    const txt = cc.querySelector('.txt');
+    const wrapCC = cc;
+    const autosize = ()=>{ ta.style.height='auto'; ta.style.height=(ta.scrollHeight+2)+'px'; };
+    const updateCount = ()=>{
+      const len = ta.value.trim().length;
+      txt.textContent = `${len} / ${MAX}`;
+      wrapCC.classList.toggle('is-over', len>MAX);
+      if (saveBtn) saveBtn.disabled = len>MAX;
     };
-    let currentLang = 'es';
+    autosize(); updateCount();
+    ta.addEventListener('input', ()=>{ autosize(); updateCount(); });
+  }
 
-    function applyI18n(lang){
-      currentLang = lang;
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if (i18n[lang][key]) el.textContent = i18n[lang][key];
+  // Imagen (si tienes estos ids en tu HTML)
+  const fileInput   = document.getElementById('fileInput');
+  const dropzone    = document.getElementById('dropzone');
+  const imageStage  = document.getElementById('imageStage');
+  const imageHint   = document.getElementById('imageHint');
+  const previewImg  = document.getElementById('previewImg');
+  const btnFitToggle= document.getElementById('btnFitToggle');
+  const btnRotate   = document.getElementById('btnRotate');
+  const triggers = ['btnUploadLeft','btnReplaceLeft','btnUploadRight','btnReplaceRight']
+                    .map(id=>document.getElementById(id)).filter(Boolean);
+  const removers  = ['btnRemoveLeft','btnRemoveRight'].map(id=>document.getElementById(id)).filter(Boolean);
+
+  let rotation = 0, fitMode = 'contain';
+  const hasImage = ()=> previewImg && previewImg.getAttribute('src');
+  const showStage = (show)=>{
+    if (!imageStage || !dropzone || !imageHint) return;
+    imageStage.classList.toggle('hidden', !show);
+    dropzone.style.display = show?'none':'flex';
+    imageHint.style.display = show?'none':'block';
+  };
+  const applyTransform = ()=>{ if (previewImg) previewImg.style.transform = `translate(-50%,-50%) rotate(${rotation}deg)`; };
+  const setFit = (mode)=>{ fitMode=mode; if(previewImg){ previewImg.style.objectFit=mode; } if(btnFitToggle) btnFitToggle.textContent = (mode==='contain')?'Ajustar':'Cubrir'; };
+  const loadImage = (file)=>{
+    if (!file || !file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = e => { previewImg.src = e.target.result; rotation=0; applyTransform(); setFit('contain'); showStage(true); };
+    reader.readAsDataURL(file);
+  };
+
+  triggers.forEach(btn=>btn.addEventListener('click', ()=>fileInput && fileInput.click()));
+  removers.forEach(btn=>btn.addEventListener('click', ()=>{ if(previewImg){ previewImg.removeAttribute('src'); showStage(false);} }));
+
+  if (btnFitToggle) btnFitToggle.addEventListener('click', ()=> setFit(fitMode==='contain'?'cover':'contain'));
+  if (btnRotate) btnRotate.addEventListener('click', ()=>{ if(!hasImage()) return; rotation=(rotation+90)%360; applyTransform(); });
+  if (fileInput) fileInput.addEventListener('change', (e)=>{ const f=e.target.files?.[0]; if(f) loadImage(f); e.target.value=''; });
+
+  if (dropzone){
+    const prevent = e=>{ e.preventDefault(); e.stopPropagation(); };
+    ['dragenter','dragover','dragleave','drop'].forEach(evt=>dropzone.addEventListener(evt, prevent, false));
+    ['dragenter','dragover'].forEach(evt=>dropzone.addEventListener(evt, ()=>dropzone.classList.add('hover'), false));
+    ['dragleave','drop'].forEach(evt=>dropzone.addEventListener(evt, ()=>dropzone.classList.remove('hover'), false));
+    dropzone.addEventListener('drop', (e)=>{ const f=e.dataTransfer?.files?.[0]; if(f) loadImage(f); });
+    dropzone.addEventListener('click', ()=>fileInput && fileInput.click());
+  }
+})();
+</script>
+
+<script>
+/* =========================================================
+   Promos: animación reveal + ripple botón CTA
+   ========================================================= */
+(function(){
+  'use strict';
+  const items = document.querySelectorAll('#promos .reveal');
+  if (!('IntersectionObserver' in window) || !items.length){
+    items.forEach(el => el.classList.add('inview'));
+  } else {
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(({isIntersecting,target}, i)=>{
+        if (isIntersecting){
+          const delay = target.getAttribute('data-delay') || 0;
+          target.style.setProperty('--d', delay);
+          target.classList.add('inview');
+          io.unobserve(target);
+        }
       });
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
-        const key = el.getAttribute('data-i18n-placeholder');
-        if (i18n[lang][key]) el.setAttribute('placeholder', i18n[lang][key]);
-      });
+    }, { rootMargin: '-5% 0px -20% 0px', threshold:.25 });
+    items.forEach((el, i)=>{ if(!el.hasAttribute('data-delay')) el.setAttribute('data-delay', i*220); io.observe(el); });
+  }
+
+  const btn = document.querySelector('#promos #btnBuscar');
+  if (!btn) return;
+  btn.addEventListener('click', (e)=>{
+    const rect = btn.getBoundingClientRect();
+    btn.style.setProperty('--rx', `${e.clientX-rect.left}px`);
+    btn.style.setProperty('--ry', `${e.clientY-rect.top}px`);
+    btn.classList.remove('ripple'); void btn.offsetWidth; btn.classList.add('ripple');
+  });
+})();
+</script>
+
+<script>
+/* =========================================================
+   Zonas: mapa + chips + buscador + logos (ÚNICO módulo)
+   ========================================================= */
+(function(){
+  'use strict';
+  // Evita dobles inicializaciones si se vuelve a cargar este script
+  if (window.__ZONES_MODULE__) return;
+  window.__ZONES_MODULE__ = true;
+
+  const mapEl    = document.getElementById('map-zones');
+  const $search  = document.getElementById('zonesSearch');
+  const $chips   = document.getElementById('zonesChips');
+  const $list    = document.getElementById('zonesList');
+  const $logoBox = document.getElementById('zone-selected');
+  if (!mapEl || !$search || !$chips || !$list || !$logoBox) return;
+
+  // Evitar "Map container is already initialized"
+  const cont = L.DomUtil.get(mapEl);
+  if (cont && cont._leaflet_id) cont._leaflet_id = null;
+
+  // Mapa
+  const map = L.map('map-zones', { zoomControl:true, scrollWheelZoom:true }).setView([-12.069,-77.035], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:20, attribution:'&copy; OpenStreetMap' }).addTo(map);
+
+  // Logos
+  const LOGO_PATH = 'img/';
+  const META = {
+    forastero:  { lat:-12.0649, lng:-77.0375, logo:'Polleria_forastero.png' },
+    picanteria: { lat:-12.0842, lng:-77.0510, logo:'La_picanteria.png' },
+    marina:     { lat:-12.0781, lng:-77.0325, logo:'La_marina.png' },
+    donpepe:    { lat:-12.0625, lng:-77.0288, logo:'Pollos_pepe.png' },
+    antojitos:  { lat:-12.0707, lng:-77.0451, logo:'Antojos_criollos.png' },
+    dulcesazon: { lat:-12.0729, lng:-77.0368, logo:'Dulce_sazon.jpg' }
+  };
+
+  // Dataset lista
+  const PLACES = [...$list.querySelectorAll('li[data-id]')].map(li=>({
+    id: li.dataset.id, name: li.textContent.trim(), cat: li.dataset.cat, li
+  }));
+
+  // Icono circular con logo
+  const logoIcon = (file)=>{
+    const size = 46;
+    return L.icon({
+      iconUrl: `${LOGO_PATH}${file}`,
+      iconSize:[size,size], iconAnchor:[size/2,size], popupAnchor:[0,-size+10], className:'marker-logo'
+    });
+  };
+
+  // Marcadores con popup (solo imagen)
+  const markersById = new Map();
+  PLACES.forEach(p=>{
+    const m = META[p.id]; if(!m) return;
+    const mk = L.marker([m.lat,m.lng], { icon: logoIcon(m.logo) }).addTo(map);
+    mk.bindPopup(`<img src="${LOGO_PATH}${m.logo}" alt="${p.name}" class="popup-logo">`, { autoPan:true, closeButton:true });
+    mk.on('click', ()=>selectPlace(p.id, true));
+    markersById.set(p.id, mk);
+  });
+
+  let activeCat = 'all';
+  let activeId  = null;
+
+  function renderList(){
+    const q = $search.value.trim().toLowerCase();
+    PLACES.forEach(p=>{
+      const byCat = (activeCat==='all' || p.cat===activeCat);
+      const byTxt = p.name.toLowerCase().includes(q);
+      p.li.style.display = (byCat && byTxt)?'':'none';
+    });
+    if (activeId){
+      const still = PLACES.some(p=>p.id===activeId && p.li.style.display!=='none');
+      if (!still){ activeId=null; $logoBox.innerHTML=''; }
     }
-    document.getElementById('lang').addEventListener('change', (e)=> applyI18n(e.target.value));
-    applyI18n('es');
-    
-  </script>
+  }
+
+  function selectPlace(id, center=false){
+    activeId = id;
+    PLACES.forEach(p=>p.li.classList.toggle('active', p.id===id));
+    const m = META[id];
+    if (center && markersById.has(id)){
+      const mk = markersById.get(id);
+      map.setView(mk.getLatLng(), 16, { animate:true });
+      mk.openPopup();
+    }
+    $logoBox.innerHTML = m ? `<img src="${LOGO_PATH}${m.logo}" alt="${PLACES.find(p=>p.id===id)?.name||'Logo'}" class="brand-logo">` : '';
+  }
+
+  // Eventos
+  PLACES.forEach(p=> p.li.addEventListener('click', ()=>selectPlace(p.id, true)));
+  $chips.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.chip'); if(!btn) return;
+    activeCat = btn.dataset.cat || 'all';
+    [...$chips.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('active', c===btn));
+    renderList();
+  });
+  $search.addEventListener('input', renderList);
+
+  // Inicial
+  renderList();
+  const first = PLACES.find(p=>p.li.style.display!=='none');
+  if (first) selectPlace(first.id, true);
+
+  // Estilos mínimos (si prefieres, muévelo a tu CSS)
+  const css = `
+    .marker-logo { border-radius:50%; box-shadow:0 2px 8px rgba(0,0,0,.25); }
+    .leaflet-popup-content { margin:10px 12px; }
+    .leaflet-popup-content .popup-logo { width:120px; height:120px; object-fit:cover; border-radius:16px; display:block; }
+    #zone-selected { display:flex; align-items:center; justify-content:center; padding:16px; }
+    #zone-selected .brand-logo { max-width:180px; max-height:120px; object-fit:contain; display:block; }
+    #zonesList li.active { outline:3px solid rgba(210,203,71,.45); box-shadow:0 6px 18px rgba(0,0,0,.08) inset; }
+  `;
+  const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
+})();
+</script>
+
+<script>
+/* =========================================================
+   Contacto: mapa independiente (no interfiere con Zonas)
+   ========================================================= */
+(function(){
+  'use strict';
+  const mapEl = document.getElementById('map-contact');
+  if (!mapEl) return;
+
+  // Evitar "already initialized"
+  const cont = L.DomUtil.get(mapEl);
+  if (cont && cont._leaflet_id) cont._leaflet_id = null;
+
+  // Coords por defecto (ajústalas a tu dirección)
+  const center = [-12.0464,-77.0428];
+
+  const map = L.map('map-contact', { zoomControl:true, scrollWheelZoom:true }).setView(center, 15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 20, attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+
+  L.marker(center).addTo(map).bindPopup('Estamos aquí').openPopup();
+})();
+</script>
+
+<script>
+(function(){
+  'use strict';
+  const el = document.getElementById('map-contact');
+  if (!el) return;
+
+  // evita dobles inits
+  if (el.dataset.mapReady === '1') return;
+  el.dataset.mapReady = '1';
+
+  // altura mínima por si el layout lo deja a 0
+  if ((parseFloat(getComputedStyle(el).height) || 0) < 50) el.style.height = '320px';
+
+  // corrige “already initialized” si recargas scripts
+  if (el._leaflet_id) el._leaflet_id = null;
+
+  // centro (cámbialo a tu dirección)
+  const center = [-12.0464, -77.0428];
+
+  const map = L.map(el, { zoomControl:true, scrollWheelZoom:true }).setView(center, 15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom:20, attribution:'&copy; OpenStreetMap'
+  }).addTo(map);
+
+  L.marker(center).addTo(map).bindPopup('Estamos aquí').openPopup();
+
+  // re-dibujo si cambia tamaño o entra al viewport
+  const ro = new ResizeObserver(()=> map.invalidateSize());
+  ro.observe(el);
+  const io = new IntersectionObserver((e)=>{ if(e[0].isIntersecting) setTimeout(()=>map.invalidateSize(),150); }, {threshold:.1});
+  io.observe(el);
+})();
+</script>
+
+
 </body>
 </html>
