@@ -3,721 +3,1009 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PuntoSabor</title>
+  <title>PuntoSabor - Descubre los Mejores Huariques de Lima</title>
+  <meta name="description" content="Encuentra los huariques más auténticos de Lima. Apoya negocios locales y descubre sabores únicos cerca de ti.">
 
-  <meta name="description" content="PuntoSabor: descubre huariques y apoya a emprendedores locales.">
-  <meta name="theme-color" content="#e6f1c9" />
-  <link rel="icon" href="img/LogoPuntoSabor.png">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <!-- TU CSS (ruta correcta) -->
+  <link rel="stylesheet" href="css/style.css?v=1">
 </head>
+
 <body>
 
-  <!-- ======= Header ======= -->
-  <header class="header" id="header">
-    <div class="container nav">
-      <div class="lang-select">
-        <label class="sr-only" for="lang">Idioma</label>
-        <select id="lang" aria-label="Seleccionar idioma">
-          <option value="es" selected>ES</option>
-          <option value="en">EN</option>
-        </select>
-      </div>
+  <body>
+  <!-- ancla para volver al inicio -->
+  <div id="top"></div>
 
-      <a class="brand" href="#inicio" aria-label="Ir a inicio">
-        <img src="img/LogoPuntoSabor.png" alt="PuntoSabor" width="56" height="56" loading="lazy">
-        <strong>PuntoSabor</strong>
+  <!-- HEADER -->
+    <header class="header" id="header">
+    <nav class="nav">
+      <!-- Logo que lleva al inicio -->
+      <a href="#top" class="logo" aria-label="Ir al inicio">
+        <img src="img/slogoPuntoSabor.png" alt="PuntoSabor" class="logo-img" />
+        <span data-translate="brand">PuntoSabor</span>
       </a>
 
-      <nav class="menu" aria-label="Barra principal">
-        <ul class="nav-list">
-          <li><a class="active" href="#inicio" data-i18n="nav.home" aria-current="page">Inicio</a></li>
-          <li><a href="#planes" data-i18n="nav.plans">Planes</a></li>
-          <li><a href="#contacto" data-i18n="nav.contact">Contáctanos</a></li>
-          <li><a href="#perfil" data-i18n="nav.profile">Perfil</a></li>
-          <li><a href="#promos" data-i18n="nav.promos">Promociones</a></li>
-          <li><a href="#zonas" data-i18n="nav.zones">Zonas</a></li>
-        </ul>
-      </nav>
-    </div>
+      <ul class="nav-menu">
+        <li><a href="#acerca"><i class="fas fa-info-circle"></i> <span data-translate="nav_about">Acerca de</span></a></li>
+        <li><a href="#servicios"><i class="fas fa-cogs"></i> <span data-translate="nav_services">Servicios</span></a></li>
+        <li><a href="#testimonios"><i class="fas fa-comments"></i> <span data-translate="nav_testimonials">Testimonios</span></a></li>
+        <li><a href="#contacto"><i class="fas fa-envelope"></i> <span data-translate="nav_contact">Contáctanos</span></a></li>
+      </ul>
+
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="lang-selector">
+          <button class="lang-btn active" data-lang="es"><i class="fas fa-globe"></i> ES</button>
+          <button class="lang-btn" data-lang="en"><i class="fas fa-globe"></i> EN</button>
+        </div>
+
+        <!-- Registrarse -> redirige a tu app -->
+        <a class="cta-header" href="https://puntosabor.netlify.app/" target="_blank" rel="noopener">
+          <i class="fas fa-user-plus"></i>
+          <span data-translate="header_register">Registrarse</span>
+        </a>
+      </div>
+    </nav>
   </header>
 
-  <!-- ======= ¿Quiénes somos? ======= -->
-  <section class="about section section--vh" id="inicio">
-    <div class="container">
-      <h2 class="title section-head" data-i18n="about.title">¿Quiénes somos?</h2>
+    <!-- =========================== HERO ============================ -->
+  <section class="hero vh-section" id="inicio">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>
+          <span data-translate="hero_title_1">Descubre los</span>
+          <span class="highlight" data-translate="hero_title_2">Mejores Huariques</span>
+          <span data-translate="hero_title_3">de Lima</span>
+        </h1>
+        <p data-translate="hero_description">
+          Conectamos amantes de la comida auténtica con los restaurantes locales más sabrosos. Apoya negocios pequeños y descubre sabores únicos.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="https://puntosabor.netlify.app/" target="_blank" rel="noopener">
+            <span data-translate="hero_cta_primary">Empieza Gratis</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
 
-      <div class="about-grid">
-        <div class="about-text">
-          <p data-i18n="about.p1">En PuntoSabor estamos convencidos de que el verdadero valor gastronómico vive en los huariques: esos espacios de cocina casera, tradicional y auténtica que muchas veces no reciben la atención que merecen.</p>
-          <p data-i18n="about.p2">Nuestra plataforma surge con la misión de dar presencia digital a estos pequeños negocios, conectando a las personas con experiencias culinarias originales y accesibles.</p>
-          <p data-i18n="about.p3">Queremos que cada usuario pueda descubrir, apreciar y compartir nuevos sabores, al mismo tiempo que apoyamos a los emprendedores locales con soluciones tecnológicas y planes pensados para su crecimiento.</p>
-          <p data-i18n="about.p4">Más que una aplicación, somos una comunidad gastronómica que celebra la diversidad, la tradición y la pasión por la buena comida.</p>
+
+          <a href="#servicios" class="btn-secondary">
+            <span data-translate="hero_cta_secondary">Ver Cómo Funciona</span>
+            <i class="fas fa-arrow-down"></i>
+          </a>
         </div>
+      </div>
 
-        <div class="about-media">
-          <img src="img/slogoPuntoSabor.png" alt="Isotipo PuntoSabor" loading="lazy">
-          <h3 class="brand-lockup">PuntoSabor</h3>
+      <div class="hero-image">
+        <div class="hero-image-main">
+          <img src="img/pollo.png" alt="Comida Peruana" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22500%22%3E%3Crect fill=%22%23D6E89D%22 width=%22600%22 height=%22500%22 rx=%2230%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%2357331F%22 font-size=%2230%22 font-weight=%22bold%22%3EComida Deliciosa%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="floating-card card-1">
+          <i class="fas fa-fire"></i>
+          <span data-translate="floating_card_1">+500 Huariques</span>
+        </div>
+        <div class="floating-card card-2">
+          <i class="fas fa-star"></i>
+          <span data-translate="floating_card_2">4.9/5 Rating</span>
+        </div>
+        <div class="floating-card card-3">
+          <i class="fas fa-heart"></i>
+          <span data-translate="floating_card_3">100% Auténtico</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======= Planes ======= -->
-  <section class="pricing section section--vh" id="planes">
-    <div class="container">
-      <h2 class="title section-head" data-i18n="plans.title">Nuestros planes</h2>
-
-<div class="pricecards" role="list" aria-label="Tabla comparativa de planes">
-
-  <!-- PREMIUM -->
-  <article class="price-card" role="listitem" aria-label="Plan Premium">
-    <header class="price-head white-bar">
-      <h3 class="plan-title">PREMIUM</h3>
-      <p class="plan-price"><strong>$35</strong><span>/MES</span></p>
-    </header>
-
-    <ul class="plan-list">
-      <li>Todo lo del plan Básico</li>
-      <li>Herramientas de promoción destacada</li>
-      <li>Estadísticas de visitas y comentarios</li>
-      <li>Soporte técnico y asesoría</li>
-    </ul>
-
-    <footer class="plan-cta">
-      <button class="btn primary" type="button">Elegir Premium</button>
-      <small>Ideal si ya tienes reseñas y buscas crecer</small>
-    </footer>
-  </article>
-
-  <!-- BÁSICO DESTACADO -->
-  <article class="price-card featured" role="listitem" aria-label="Plan Básico">
-    <div class="ribbon" aria-hidden="true">Popular</div>
-    <header class="price-head white-bar">
-      <h3 class="plan-title">BÁSICO</h3>
-      <p class="plan-price"><strong>Gratis</strong></p>
-    </header>
-
-    <ul class="plan-list">
-      <li>Publica tu huarique</li>
-      <li>Perfil con datos esenciales</li>
-      <li>Acceso a reseñas y calificaciones</li>
-    </ul>
-
-    <footer class="plan-cta">
-      <button class="btn light" type="button">Empezar gratis</button>
-      <small>Perfecto para empezar a tener visibilidad</small>
-    </footer>
-  </article>
-
-  <!-- EXCLUSIVO -->
-  <article class="price-card" role="listitem" aria-label="Plan Exclusivo">
-    <header class="price-head white-bar">
-      <h3 class="plan-title">EXCLUSIVO</h3>
-      <p class="plan-price"><strong>$50</strong><span>/MES</span></p>
-    </header>
-
-    <ul class="plan-list">
-      <li>Todo lo del plan Premium</li>
-      <li>Publicidad prioritaria</li>
-      <li>Gestión avanzada de reseñas</li>
-      <li>Acceso a eventos especiales</li>
-    </ul>
-
-    <footer class="plan-cta">
-      <button class="btn primary" type="button">Elegir Exclusivo</button>
-      <small>Para marcas que quieren destacar al máximo</small>
-    </footer>
-  </article>
-
-</div>
-
-    </div>
-  </section>
-
-  <!-- ======= Contáctanos ======= -->
-  <section class="section section--vh" id="contacto">
-    <div class="container">
-      <h2 class="title section-head" data-i18n="contact.title">Contáctanos</h2>
-
-      <div class="contact-card">
-        <form class="contact-form dark" onsubmit="event.preventDefault();alert(currentLang==='en'?'Message sent!':'¡Mensaje enviado!');" aria-label="Formulario de contacto">
-          <h3 data-i18n="contact.cta">Ponte en contacto</h3>
-
-          <label for="name" data-i18n="contact.name">Nombre</label>
-          <input id="name" required placeholder="Tu nombre" data-i18n-placeholder="contact.namePh" autocomplete="name">
-
-          <label for="email" data-i18n="contact.email">Correo electrónico</label>
-          <input id="email" type="email" required placeholder="tucorreo@ejemplo.com" data-i18n-placeholder="contact.emailPh" autocomplete="email">
-
-          <label for="msg" data-i18n="contact.msg">Contenido</label>
-          <textarea id="msg" required placeholder="Cuéntanos en qué podemos ayudarte" data-i18n-placeholder="contact.msgPh"></textarea>
-
-          <label class="checkbox"><input type="checkbox"> <span data-i18n="contact.newsletter">Me gustaría recibir el boletín.</span></label>
-
-          <button class="btn primary" type="submit" data-i18n="contact.send">Enviar</button>
-        </form>
-
-        <aside class="contact-side">
-          
-       <div id="map-contact"
-     class="contact-map"
-     aria-label="Mapa de ubicación"
-     data-center="-12.0464,-77.0428"
-     data-zoom="15"></div>
-
-          
-          <address class="contact-address">
-            <p><strong>Lima, Perú</strong></p>
-            <p>+51 963 179 684</p>
-            <p><a href="mailto:PuntoSabor@gmail.com">PuntoSabor@gmail.com</a></p>
-          </address>
-        </aside>
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <i class="fas fa-store" aria-hidden="true"></i>
+        <h3 data-count="500">0</h3>
+        <p data-translate="stat_1">Huariques Registrados</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-users" aria-hidden="true"></i>
+        <h3 data-count="10000">0</h3>
+        <p data-translate="stat_2">Usuarios Activos</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-comment-dots" aria-hidden="true"></i>
+        <h3 data-count="25000">0</h3>
+        <p data-translate="stat_3">Reseñas Auténticas</p>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+        <h3 data-count="15">0</h3>
+        <p data-translate="stat_4">Distritos de Lima</p>
       </div>
     </div>
   </section>
 
-  <!-- ======= Perfil ======= -->
- <section class="profile" id="perfil">
-  <div class="container">
-    <!-- Top bar -->
-    <div class="profile-top">
-      <button class="icon-btn back-btn" aria-label="Regresar" onclick="location.hash='#inicio'">←</button>
-      <button class="pill-btn" type="button">LOGO</button>
+  <!-- BENEFITS -->
+  <section class="benefits" id="acerca">
+    <div class="section-header">
+      <h2 class="section-title" data-translate="benefits_title">¿Por Qué Elegir PuntoSabor?</h2>
+      <p class="section-subtitle" data-translate="benefits_subtitle">
+        La plataforma que transforma cómo descubres y apoyas la gastronomía local peruana
+      </p>
     </div>
 
-    <div class="profile-editor card brown">
-      <div class="editor-grid">
-        <!-- IZQUIERDA: descripción -->
-        <div class="editor-left">
-          <label for="bio" class="editor-title">Descripción del negocio</label>
-          <textarea id="bio" placeholder="Escribe aquí la descripción de tu negocio..."></textarea>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
+        <h3 data-translate="benefit_1_title">Encuentra Cerca</h3>
+        <p data-translate="benefit_1_desc">Descubre huariques auténticos en tu zona con nuestro mapa interactivo. La comida casera que buscas está más cerca de lo que piensas.</p>
+      </div>
 
-          <div class="charcount">
-            <span class="dot" aria-hidden="true"></span>
-            <span class="txt">0 / 600</span>
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fas fa-star" aria-hidden="true"></i></div>
+        <h3 data-translate="benefit_2_title">Reseñas Reales</h3>
+        <p data-translate="benefit_2_desc">Lee opiniones honestas de comensales como tú. Sin filtros, solo experiencias auténticas compartidas por la comunidad.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fas fa-tags" aria-hidden="true"></i></div>
+        <h3 data-translate="benefit_3_title">Promociones Exclusivas</h3>
+        <p data-translate="benefit_3_desc">Accede a ofertas especiales y descuentos en tus huariques favoritos. Ahorra mientras apoyas negocios locales.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
+        <h3 data-translate="benefit_4_title">Apoya Local</h3>
+        <p data-translate="benefit_4_desc">Cada visita que haces ayuda a emprendedores peruanos a crecer. Sé parte del cambio en tu comunidad gastronómica.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fas fa-bell" aria-hidden="true"></i></div>
+        <h3 data-translate="benefit_5_title">Notificaciones</h3>
+        <p data-translate="benefit_5_desc">Recibe alertas cuando tus lugares favoritos lancen nuevos platos o promociones especiales. Nunca te pierdas nada.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fas fa-mobile-alt" aria-hidden="true"></i></div>
+        <h3 data-translate="benefit_6_title">Fácil de Usar</h3>
+        <p data-translate="benefit_6_desc">Interfaz intuitiva diseñada para que encuentres lo que buscas en segundos. Simple, rápido y efectivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="servicios">
+    <div class="section-header">
+      <h2 class="section-title" data-translate="how_it_works_title">Cómo Funciona</h2>
+      <p class="section-subtitle" data-translate="how_it_works_subtitle">
+        En 3 simples pasos estarás disfrutando de los mejores sabores locales
+      </p>
+    </div>
+
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-number">
+          <i class="fas fa-user-plus" aria-hidden="true"></i>
+          <span>1</span>
+        </div>
+        <div class="step-content">
+          <h3 data-translate="step_1_title">Regístrate Gratis</h3>
+          <p data-translate="step_1_desc">Crea tu cuenta en menos de 2 minutos. No necesitas tarjeta de crédito, solo tu email y estás listo para comenzar.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">
+          <i class="fas fa-search" aria-hidden="true"></i>
+          <span>2</span>
+        </div>
+        <div class="step-content">
+          <h3 data-translate="step_2_title">Explora Huariques</h3>
+          <p data-translate="step_2_desc">Busca por zona, tipo de comida o plato favorito. Lee reseñas auténticas, ve fotos deliciosas y encuentra tu próximo lugar favorito.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">
+          <i class="fas fa-utensils" aria-hidden="true"></i>
+          <span>3</span>
+        </div>
+        <div class="step-content">
+          <h3 data-translate="step_3_title">Disfruta y Comparte</h3>
+          <p data-translate="step_3_desc">Visita el huarique, disfruta de comida auténtica y comparte tu experiencia con la comunidad para ayudar a otros.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="planes">
+    <div class="section-header">
+      <h2 class="section-title" data-translate="pricing_title">Planes Para Tu Negocio</h2>
+      <p class="section-subtitle" data-translate="pricing_subtitle">
+        Elige el plan perfecto para hacer crecer tu huarique
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3 data-translate="plan_basic_name">BÁSICO</h3>
+        <div class="price" data-translate="plan_basic_price">Gratis</div>
+        <div class="price-period" data-translate="plan_basic_period">Para siempre</div>
+        <ul class="features-list">
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_basic_feature_1">Perfil de negocio completo</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_basic_feature_2">Aparece en búsquedas</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_basic_feature_3">Reseñas de clientes</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_basic_feature_4">Galería de fotos</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_basic_feature_5">Horarios y ubicación</span></li>
+        </ul>
+        <button class="btn-primary" onclick="alert('¡Regístrate ahora!')">
+          <span data-translate="plan_basic_cta">Empezar Gratis</span>
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="price-card featured">
+        <div class="popular-badge">
+          <i class="fas fa-bolt" aria-hidden="true"></i>
+          <span data-translate="popular_badge">MÁS POPULAR</span>
+        </div>
+        <h3 data-translate="plan_premium_name">PREMIUM</h3>
+        <div class="price">$35</div>
+        <div class="price-period" data-translate="plan_premium_period">al mes</div>
+        <ul class="features-list">
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_premium_feature_1">Todo lo del plan Básico</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_premium_feature_2">Destacado en búsquedas</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_premium_feature_3">Promociones destacadas</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_premium_feature_4">Estadísticas detalladas</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_premium_feature_5">Soporte prioritario</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_premium_feature_6">3 publicaciones mensuales</span></li>
+        </ul>
+        <button class="btn-primary" onclick="alert('Prueba 15 días gratis!')">
+          <span data-translate="plan_premium_cta">Probar 15 Días Gratis</span>
+          <i class="fas fa-rocket" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="price-card">
+        <h3 data-translate="plan_exclusive_name">EXCLUSIVO</h3>
+        <div class="price">$50</div>
+        <div class="price-period" data-translate="plan_exclusive_period">al mes</div>
+        <ul class="features-list">
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_exclusive_feature_1">Todo lo del plan Premium</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_exclusive_feature_2">Posición #1 en resultados</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_exclusive_feature_3">Publicidad en home</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_exclusive_feature_4">Gestión de eventos</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_exclusive_feature_5">Consultoría personalizada</span></li>
+          <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-translate="plan_exclusive_feature_6">Publicaciones ilimitadas</span></li>
+        </ul>
+        <button class="btn-primary" onclick="alert('Contacta ventas!')">
+          <span data-translate="plan_exclusive_cta">Contactar Ventas</span>
+          <i class="fas fa-crown" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonios">
+    <div class="section-header">
+      <h2 class="section-title" data-translate="testimonials_title">Lo Que Dicen Nuestros Usuarios</h2>
+      <p class="section-subtitle" data-translate="testimonials_subtitle">
+        Miles de personas ya descubren sabores únicos cada día
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+        <div class="testimonial-text" data-translate="testimonial_1_text">
+          "Gracias a PuntoSabor encontré el mejor ceviche de mi vida a 3 cuadras de mi casa. ¡No tenía idea que existía este lugar!"
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div class="author-info">
+            <strong data-translate="testimonial_1_name">María Gonzales</strong>
+            <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span data-translate="testimonial_1_location">Miraflores, Lima</span></span>
           </div>
+        </div>
+      </div>
 
-          <div class="actions">
-            <button type="button" class="btn ghost" id="btnUploadLeft">Subir imagen</button>
-            <button type="button" class="btn ghost" id="btnReplaceLeft">Reemplazar</button>
-            <button type="button" class="btn ghost" id="btnRemoveLeft">Borrar imagen</button>
-            <button type="button" class="btn ghost" id="btnEditLeft">Editar</button>
+      <div class="testimonial-card">
+        <div class="stars"><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i></div>
+        <div class="testimonial-text" data-translate="testimonial_3_text">
+          "La app es súper fácil de usar y las reseñas son honestas. Ya he probado 12 huariques diferentes este mes y todos excelentes."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">C</div>
+          <div class="author-info">
+            <strong data-translate="testimonial_3_name">Carlos Medina</strong>
+            <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span data-translate="testimonial_3_location">San Isidro, Lima</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <button type="button" class="btn primary" id="btnSave">Guardar</button>
-            <a class="btn back-ghost" href="#inicio">REGRESAR</a>
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="contacto">
+    <div class="cta-content">
+      <h2 data-translate="cta_final_title">¿Listo Para Descubrir Sabores Únicos?</h2>
+      <p data-translate="cta_final_description">Únete a miles de personas que ya apoyan la gastronomía local peruana</p>
+
+      <div class="cta-buttons">
+        <button class="btn-primary" onclick="openModal()">
+          <span data-translate="cta_final_primary">Registrarme Ahora</span>
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </button>
+        <a href="#planes" class="btn-secondary">
+          <span data-translate="cta_final_secondary">Ver Planes</span>
+          <i class="fas fa-list" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="offer-badge">
+        <i class="fas fa-gift" aria-hidden="true"></i>
+        <span><strong data-translate="offer_badge_label">Oferta especial:</strong> <span data-translate="offer_badge_text">Primeros 100 negocios obtienen 3 meses Premium gratis</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <div class="footer-logo">
+        <img src="img/slogoPuntoSabor.png" alt="PuntoSabor" class="footer-logo-img">
+        <span data-translate="brand">PuntoSabor</span>
+      </div>
+      <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.7;" data-translate="footer_description">
+        Conectando amantes de la comida auténtica con los mejores huariques de Lima.
+      </p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h4 data-translate="footer_company">Equipo</h4>
+      <ul>
+        <li><a href="#acerca"><i class="fas fa-chevron-right" aria-hidden="true"></i> <span data-translate="footer_about">Acerca de</span></a></li>
+        <li><a href="#servicios"><i class="fas fa-chevron-right" aria-hidden="true"></i> <span data-translate="footer_services">Servicios</span></a></li>
+        <li><a href="#"><i class="fas fa-chevron-right" aria-hidden="true"></i> <span data-translate="footer_blog">Blog</span></a></li>
+        <li><a href="#"><i class="fas fa-chevron-right" aria-hidden="true"></i> <span data-translate="footer_careers">Carreras</span></a></li>
+        <li><a href="#"><i class="fas fa-chevron-right" aria-hidden="true"></i> <span data-translate="footer_press">Prensa</span></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4 data-translate="footer_business">Para Negocios</h4>
+      <ul>
+        <li><a href="#planes"><i class="fas fa-chevron-right" aria-hidden="true"></i> <span data-translate="footer_pricing">Planes y Precios</span></a></li>
+        <li><a href="#"><i class="fas fa-chevron-right" aria-hidden="true"></i> <span data-translate="footer_register_business">Registrar Negocio</span></a></li>
+        <li><a href="#"><i class="fas fa-chevron-right" aria-hidden="true"></i> <span data-translate="footer_success">Historias de Éxito</span></a></li>
+        <li><a href="#"><i class="fas fa-chevron-right" aria-hidden="true"></i> <span data-translate="footer_resources">Recursos</span></a></li>
+        <li><a href="#"><i class="fas fa-chevron-right" aria-hidden="true"></i> <span data-translate="footer_help">Centro de Ayuda</span></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4 data-translate="footer_contact">Contáctanos</h4>
+      <ul>
+        <li style="padding: 0.3rem 0;"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span data-translate="footer_location">Lima, Perú</span></li>
+        <li style="padding: 0.3rem 0;"><i class="fas fa-envelope" aria-hidden="true"></i> contacto@puntosabor.com</li>
+        <li style="padding: 0.3rem 0;"><i class="fas fa-phone" aria-hidden="true"></i> +51 963 179 684</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 PuntoSabor. <span data-translate="footer_rights">Todos los derechos reservados</span>. | 
+      <a href="#" style="color: inherit; text-decoration: none;" data-translate="footer_privacy">Privacidad</a> | 
+      <a href="#" style="color: inherit; text-decoration: none;" data-translate="footer_terms">Términos</a>
+    </p>
+  </div>
+</footer>
+
+  <!-- MODAL -->
+  <div class="modal" id="registrationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar modal"><i class="fas fa-times" aria-hidden="true"></i></button>
+
+      <h2 id="modalTitle" data-translate="modal_title">¡Regístrate Gratis!</h2>
+      <p class="subtitle" data-translate="modal_subtitle">Empieza a descubrir los mejores huariques hoy</p>
+
+      <form onsubmit="event.preventDefault(); alert('¡Registro exitoso! Te enviamos un email.'); closeModal();">
+        <div class="form-group">
+          <label for="name"><i class="fas fa-user" aria-hidden="true"></i> <span data-translate="form_name">Nombre completo</span></label>
+          <div class="input-wrapper">
+            <input type="text" id="name" name="name" placeholder="Tu nombre" required autocomplete="name">
+            <i class="fas fa-user" aria-hidden="true"></i>
           </div>
         </div>
 
-        <!-- DERECHA: imagen -->
-        <div class="editor-right">
-          <div class="image-panel" id="imagePanel">
-            <input id="fileInput" type="file" accept="image/*" class="sr-only" />
-            <div class="dropzone" id="dropzone">
-              <div class="dz-inner">
-                <strong>Arrastra una imagen</strong>
-                <span>o haz click para seleccionar</span>
-                <button class="btn ghost" type="button" id="btnUploadRight">Elegir archivo</button>
-              </div>
-            </div>
-
-            <div class="image-stage hidden" id="imageStage">
-              <div class="image-canvas">
-                <img id="previewImg" alt="Vista previa" />
-              </div>
-
-              <div class="image-toolbar">
-                <div class="tools-left">
-                  <button type="button" class="tool-btn" id="btnFitToggle" title="Ajustar/Cubrir">Ajustar</button>
-                  <button type="button" class="tool-btn" id="btnRotate" title="Rotar 90°">Rotar 90°</button>
-                </div>
-                <div class="tools-right">
-                  <button type="button" class="tool-btn danger" id="btnRemoveRight" title="Quitar">Quitar</button>
-                  <button type="button" class="tool-btn" id="btnReplaceRight" title="Reemplazar">Reemplazar</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ayuda -->
-            <p class="image-hint" id="imageHint">Formatos: JPG, PNG o WEBP (máx. ~10MB). Puedes arrastrar y soltar.</p>
+        <div class="form-group">
+          <label for="email"><i class="fas fa-envelope" aria-hidden="true"></i> <span data-translate="form_email">Email</span></label>
+          <div class="input-wrapper">
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required autocomplete="email">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
           </div>
         </div>
-      </div>
+
+        <div class="form-group">
+          <label for="password"><i class="fas fa-lock" aria-hidden="true"></i> <span data-translate="form_password">Contraseña</span></label>
+          <div class="input-wrapper">
+            <input type="password" id="password" name="new-password" placeholder="Mínimo 8 caracteres" minlength="8" required autocomplete="new-password">
+            <i class="fas fa-lock" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" required>
+          <label for="terms" data-translate="form_terms">Acepto los términos y condiciones</label>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+          <span data-translate="form_submit">Crear Cuenta Gratis</span>
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </button>
+
+        <div class="modal-footer">
+          <p style="color: #999;"><span data-translate="form_login_text">¿Ya tienes cuenta?</span> <a href="#" data-translate="form_login_link">Inicia sesión</a></p>
+        </div>
+      </form>
     </div>
   </div>
-</section>
 
-  <!-- ======= Promos ======= -->
-  <section class="promos section section--vh" id="promos">
-    <div class="container">
-      <h2 class="title section-head" data-i18n="promos.title">Promociones</h2>
-
-      <div class="promos-hero promos-row">
-      <article class="promo-card reveal" data-delay="0">
-        <div class="promo-media"><img src="img/pollo.png" alt="Pollo a la brasa"></div>
-        <h3>POLLO A LA BRASA</h3>
-      </article>
-
-      <div class="promo-plus reveal" data-delay="80">+</div>
-
-      <article class="promo-card reveal" data-delay="160">
-        <div class="promo-media"><img src="img/arroz chaufa.png" alt="Arroz chaufa"></div>
-        <h3>ARROZ CHAUFA</h3>
-      </article>
-
-      <div class="promo-plus reveal" data-delay="240">+</div>
-
-      <article class="promo-card reveal" data-delay="320">
-        <div class="promo-media"><img src="img/Jarra de chicha.png" alt="Jarra de chicha morada"></div>
-        <h3>JARRA DE CHICHA MORADA</h3>
-      </article>
-    </div>
-
-    <div class="promos-cta">
-      <button id="btnBuscar" class="btn primary" type="button">Buscar restaurant</button>
-    </div>
-  </div>
-</section>
-
- <!-- ======= Zonas ======= -->
-<section class="zones section section--vh is-long" id="zonas">
-  <div class="container">
-    <h2 class="title section-head" data-i18n="zones.title">Huariques cerca de ti</h2>
-
-    <input id="zonesSearch"
-           type="search"
-           placeholder="Buscar en esta zona (ej. pollo, ceviche, postres)"
-           data-i18n-placeholder="zones.searchPh"
-           aria-label="Buscar en lista de huariques">
-
-    <!-- === Fila ÚNICA de categorías (con avatar) === -->
-
-<div id="zonesChips" class="chips chips--avatar" role="tablist" aria-label="Filtros por categoría">
-  <button class="chip chip--avatar active" data-cat="all" role="tab" aria-selected="true">
-    <span class="chip__label">Todos</span>
-  </button>
-
-  <button class="chip chip--avatar" data-cat="pollo" role="tab" aria-selected="false">
-    <span class="chip__avatar">
-      <img src="img/Pollo_seccion.jpg" alt="Pollo" loading="lazy">
-    </span>
-    <span class="chip__label">Pollo</span>
-  </button>
-
-  <button class="chip chip--avatar" data-cat="mariscos" role="tab" aria-selected="false">
-    <span class="chip__avatar">
-      <img src="img/Mariscos_seccion.jpg" alt="Mariscos" loading="lazy">
-    </span>
-    <span class="chip__label">Mariscos</span>
-  </button>
-
-  <button class="chip chip--avatar" data-cat="criolla" role="tab" aria-selected="false">
-    <span class="chip__avatar">
-      <img src="img/Criolla_seccion.jpg" alt="Criolla" loading="lazy">
-    </span>
-    <span class="chip__label">Criolla</span>
-  </button>
-
-  <button class="chip chip--avatar" data-cat="postres" role="tab" aria-selected="false">
-    <span class="chip__avatar">
-      <img src="img/Postres_seccion.jpg" alt="Postres" loading="lazy">
-    </span>
-    <span class="chip__label">Postres</span>
-  </button>
-</div>
-
-    <!-- === /Fila ÚNICA de categorías === -->
-
-    <div class="zones-split">
-<ul class="zones-list" id="zonesList">
-  <li data-id="forastero"  data-cat="pollo"><span>El Forastero</span></li>
-  <li data-id="picanteria" data-cat="criolla"><span>La Picantería</span></li>
-  <li data-id="marina"     data-cat="mariscos"><span>Cevichería Marina</span></li>
-  <li data-id="donpepe"    data-cat="pollo"><span>Pollos Don Pepe</span></li>
-  <li data-id="antojitos"  data-cat="criolla"><span>Antojos Criollos</span></li>
-  <li data-id="dulcesazon" data-cat="postres"><span>Dulce Sazón</span></li>
-</ul>
-
-
-      <div class="zones-map-wrap">
-        <div id="map-zones" class="zones-map" aria-label="Mapa con huariques"></div>
-        <div id="zone-selected" class="zone-selected" aria-live="polite"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-  <!-- ======= Footer ======= -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <img src="img/LogoPuntoSabor.png" alt="" width="20" height="20" style="vertical-align:middle;margin-right:8px;">
-        <strong>PuntoSabor</strong>
-      </div>
-      <div class="social">
-        <a href="#" aria-label="Instagram">📸</a>
-        <a href="#" aria-label="Facebook">📘</a>
-        <a href="#" aria-label="TikTok">🎵</a>
-      </div>
-    </div>
-  </footer>
-
-<!-- ======= JS ======= -->
-
-
-<script>
-/* =========================================================
-   Núcleo: i18n, scroll suave y ScrollSpy básico
-   ========================================================= */
-(function(){
-  'use strict';
-
-  const I18N = {
-    es: {
-      "nav.home":"Inicio","nav.plans":"Planes","nav.contact":"Contáctanos","nav.profile":"Perfil","nav.promos":"Promociones","nav.zones":"Zonas",
-      "about.title":"¿Quiénes somos?","about.p1":"En PuntoSabor creemos que la verdadera riqueza gastronómica está en los huariques: esos rincones de comida casera, tradicional y auténtica que muchas veces pasan desapercibidos.","about.p2":"Nuestra plataforma nace con el propósito de dar visibilidad digital a estos pequeños negocios, conectando a los usuarios con experiencias culinarias únicas y accesibles.","about.p3":"Queremos que cada persona pueda descubrir, valorar y recomendar nuevos sabores, mientras apoyamos a los emprendedores locales a crecer con herramientas tecnológicas y planes diseñados para sus necesidades.","about.p4":"Más que una app, somos una comunidad gastronómica que celebra la diversidad, la tradición y la pasión por la buena comida.",
-      "plans.title":"Nuestros planes","plans.basicPrice":"Gratis","plans.basic1":"Publica tu huarique","plans.basic2":"Perfil con datos esenciales","plans.basic3":"Acceso a reseñas y calificaciones","plans.premium1":"Todo lo del plan Básico","plans.premium2":"Herramientas de promoción destacada","plans.premium3":"Estadísticas de visitas y comentarios","plans.premium4":"Soporte técnico y asesoría","plans.ex1":"Todo lo del plan Premium","plans.ex2":"Publicidad prioritaria","plans.ex3":"Gestión avanzada de reseñas","plans.ex4":"Acceso a eventos especiales",
-      "contact.title":"Contáctanos","contact.cta":"Ponte en contacto","contact.name":"Nombre","contact.namePh":"Tu nombre","contact.email":"Correo electrónico","contact.emailPh":"tucorreo@ejemplo.com","contact.msg":"Contenido","contact.msgPh":"Cuéntanos en qué podemos ayudarte","contact.newsletter":"Me gustaría recibir el boletín.","contact.send":"Enviar",
-      "profile.bioPh":"Escribe aquí la descripción de tu negocio...","profile.upload":"Subir imagen","profile.deleteImg":"Borrar imagen","profile.edit":"Editar","profile.save":"Guardar","profile.remove":"Eliminar","profile.back":"REGRESAR",
-      "promos.title":"Promociones","promos.btn":"Buscar restaurant",
-      "zones.title":"Huariques cerca de ti","zones.searchPh":"Buscar en esta zona (ej. pollo, ceviche, postres)","zones.all":"Todos","zones.chicken":"Pollo","zones.seafood":"Mariscos","zones.criolla":"Criolla","zones.dessert":"Postres"
-    }
-  };
-
-  const LANG = 'es';
-  function applyI18n(){
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const k = el.getAttribute('data-i18n');
-      if (I18N[LANG][k]) el.textContent = I18N[LANG][k];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
-      const k = el.getAttribute('data-i18n-placeholder');
-      if (I18N[LANG][k]) el.setAttribute('placeholder', I18N[LANG][k]);
-    });
-  }
-  applyI18n();
-
-  // Scroll suave
-  document.addEventListener('click', (e)=>{
-    const a = e.target.closest('.menu a[href^="#"], a[href^="#"]');
-    if (!a) return;
-    const t = document.querySelector(a.getAttribute('href'));
-    if (!t) return;
-    e.preventDefault();
-    t.scrollIntoView({behavior:'smooth'});
-  });
-
-  // ScrollSpy simple
-  const navLinks = Array.from(document.querySelectorAll('.menu a[href^="#"]'));
-  const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  function setActive(id){
-    navLinks.forEach(a=>{
-      const on = a.getAttribute('href') === '#'+id;
-      a.classList.toggle('active', on);
-      if (on) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
-    });
-  }
-  if ('IntersectionObserver' in window){
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(en => { if (en.isIntersecting) setActive(en.target.id); });
-    }, { rootMargin: '-45% 0px -50% 0px', threshold:[0,.25,.5,1] });
-    sections.forEach(s => io.observe(s));
-  }
-})();
-</script>
-
-<script>
-/* =========================================================
-   Perfil: textarea autosize + contador, subida/edición de imagen
-   ========================================================= */
-(function(){
-  'use strict';
-  const ta = document.getElementById('bio');
-  const MAX = 600;
-  const saveBtn = document.querySelector('[data-i18n="profile.save"], #btnSave');
-
-  if (ta){
-    const cc = document.createElement('div');
-    cc.className = 'charcount';
-    cc.innerHTML = '<span class="dot" aria-hidden="true"></span><span class="txt">0 / '+MAX+'</span>';
-    const wrap = ta.closest('.profile-text'); wrap && wrap.appendChild(cc);
-
-    const txt = cc.querySelector('.txt');
-    const wrapCC = cc;
-    const autosize = ()=>{ ta.style.height='auto'; ta.style.height=(ta.scrollHeight+2)+'px'; };
-    const updateCount = ()=>{
-      const len = ta.value.trim().length;
-      txt.textContent = `${len} / ${MAX}`;
-      wrapCC.classList.toggle('is-over', len>MAX);
-      if (saveBtn) saveBtn.disabled = len>MAX;
+  <script>
+    // TRADUCCIONES
+    const translations = {
+      es: {
+        brand: "PuntoSabor",
+        nav_about: "Acerca de",
+        nav_services: "Servicios",
+        nav_testimonials: "Testimonios",
+        nav_contact: "Contáctanos",
+        header_register: "Registrarse",
+        hero_title_1: "Descubre los",
+        hero_title_2: "Mejores Huariques",
+        hero_title_3: "de Lima",
+        hero_description: "Conectamos amantes de la comida auténtica con los restaurantes locales más sabrosos. Apoya negocios pequeños y descubre sabores únicos.",
+        hero_cta_primary: "Empieza Gratis",
+        hero_cta_secondary: "Ver Cómo Funciona",
+        floating_card_1: "+500 Huariques",
+        floating_card_2: "4.9/5 Rating",
+        floating_card_3: "100% Auténtico",
+        stat_1: "Huariques Registrados",
+        stat_2: "Usuarios Activos",
+        stat_3: "Reseñas Auténticas",
+        stat_4: "Distritos de Lima",
+        benefits_title: "¿Por Qué Elegir PuntoSabor?",
+        benefits_subtitle: "La plataforma que transforma cómo descubres y apoyas la gastronomía local peruana",
+        benefit_1_title: "Encuentra Cerca",
+        benefit_1_desc: "Descubre huariques auténticos en tu zona con nuestro mapa interactivo. La comida casera que buscas está más cerca de lo que piensas.",
+        benefit_2_title: "Reseñas Reales",
+        benefit_2_desc: "Lee opiniones honestas de comensales como tú. Sin filtros, solo experiencias auténticas compartidas por la comunidad.",
+        benefit_3_title: "Promociones Exclusivas",
+        benefit_3_desc: "Accede a ofertas especiales y descuentos en tus huariques favoritos. Ahorra mientras apoyas negocios locales.",
+        benefit_4_title: "Apoya Local",
+        benefit_4_desc: "Cada visita que haces ayuda a emprendedores peruanos a crecer. Sé parte del cambio en tu comunidad gastronómica.",
+        benefit_5_title: "Notificaciones",
+        benefit_5_desc: "Recibe alertas cuando tus lugares favoritos lancen nuevos platos o promociones especiales. Nunca te pierdas nada.",
+        benefit_6_title: "Fácil de Usar",
+        benefit_6_desc: "Interfaz intuitiva diseñada para que encuentres lo que buscas en segundos. Simple, rápido y efectivo.",
+        how_it_works_title: "Cómo Funciona",
+        how_it_works_subtitle: "En 3 simples pasos estarás disfrutando de los mejores sabores locales",
+        step_1_title: "Regístrate Gratis",
+        step_1_desc: "Crea tu cuenta en menos de 2 minutos. No necesitas tarjeta de crédito, solo tu email y estás listo para comenzar.",
+        step_2_title: "Explora Huariques",
+        step_2_desc: "Busca por zona, tipo de comida o plato favorito. Lee reseñas auténticas, ve fotos deliciosas y encuentra tu próximo lugar favorito.",
+        step_3_title: "Disfruta y Comparte",
+        step_3_desc: "Visita el huarique, disfruta de comida auténtica y comparte tu experiencia con la comunidad para ayudar a otros.",
+        pricing_title: "Planes Para Tu Negocio",
+        pricing_subtitle: "Elige el plan perfecto para hacer crecer tu huarique",
+        plan_basic_name: "BÁSICO",
+        plan_basic_price: "Gratis",
+        plan_basic_period: "Para siempre",
+        plan_basic_feature_1: "Perfil de negocio completo",
+        plan_basic_feature_2: "Aparece en búsquedas",
+        plan_basic_feature_3: "Reseñas de clientes",
+        plan_basic_feature_4: "Galería de fotos",
+        plan_basic_feature_5: "Horarios y ubicación",
+        plan_basic_cta: "Empezar Gratis",
+        popular_badge: "MÁS POPULAR",
+        plan_premium_name: "PREMIUM",
+        plan_premium_period: "al mes",
+        plan_premium_feature_1: "Todo lo del plan Básico",
+        plan_premium_feature_2: "Destacado en búsquedas",
+        plan_premium_feature_3: "Promociones destacadas",
+        plan_premium_feature_4: "Estadísticas detalladas",
+        plan_premium_feature_5: "Soporte prioritario",
+        plan_premium_feature_6: "3 publicaciones mensuales",
+        plan_premium_cta: "Probar 15 Días Gratis",
+        plan_exclusive_name: "EXCLUSIVO",
+        plan_exclusive_period: "al mes",
+        plan_exclusive_feature_1: "Todo lo del plan Premium",
+        plan_exclusive_feature_2: "Posición #1 en resultados",
+        plan_exclusive_feature_3: "Publicidad en home",
+        plan_exclusive_feature_4: "Gestión de eventos",
+        plan_exclusive_feature_5: "Consultoría personalizada",
+        plan_exclusive_feature_6: "Publicaciones ilimitadas",
+        plan_exclusive_cta: "Contactar Ventas",
+        testimonials_title: "Lo Que Dicen Nuestros Usuarios",
+        testimonials_subtitle: "Miles de personas ya descubren sabores únicos cada día",
+        testimonial_1_text: "Gracias a PuntoSabor encontré el mejor ceviche de mi vida a 3 cuadras de mi casa. ¡No tenía idea que existía este lugar!",
+        testimonial_1_name: "María Gonzales",
+        testimonial_1_location: "Miraflores, Lima",
+        testimonial_2_text: "Como dueño de un pequeño restaurante, PuntoSabor triplicó mis clientes en 2 meses. Increíble plataforma para negocios locales.",
+        testimonial_2_name: "José Ramírez",
+        testimonial_2_location: "Dueño - El Forastero",
+        testimonial_3_text: "La app es súper fácil de usar y las reseñas son honestas. Ya he probado 12 huariques diferentes este mes y todos excelentes.",
+        testimonial_3_name: "Carlos Medina",
+        testimonial_3_location: "San Isidro, Lima",
+        cta_final_title: "¿Listo Para Descubrir Sabores Únicos?",
+        cta_final_description: "Únete a miles de personas que ya apoyan la gastronomía local peruana",
+        cta_final_primary: "Registrarme Ahora",
+        cta_final_secondary: "Ver Planes",
+        offer_badge_label: "Oferta especial:",
+        offer_badge_text: "Primeros 100 negocios obtienen 3 meses Premium gratis",
+        footer_description: "Conectando amantes de la comida auténtica con los mejores huariques de Lima.",
+        footer_company: "Equipo",
+        footer_about: "Acerca de",
+        footer_services: "Servicios",
+        footer_blog: "Blog",
+        footer_careers: "Carreras",
+        footer_press: "Prensa",
+        footer_business: "Para Negocios",
+        footer_pricing: "Planes y Precios",
+        footer_register_business: "Registrar Negocio",
+        footer_success: "Historias de Éxito",
+        footer_resources: "Recursos",
+        footer_help: "Centro de Ayuda",
+        footer_contact: "Contáctanos",
+        footer_location: "Lima, Perú",
+        footer_rights: "Todos los derechos reservados",
+        footer_privacy: "Privacidad",
+        footer_terms: "Términos",
+        modal_title: "¡Regístrate Gratis!",
+        modal_subtitle: "Empieza a descubrir los mejores huariques hoy",
+        form_name: "Nombre completo",
+        form_email: "Email",
+        form_password: "Contraseña",
+        form_terms: "Acepto los términos y condiciones",
+        form_submit: "Crear Cuenta Gratis",
+        form_login_text: "¿Ya tienes cuenta?",
+        form_login_link: "Inicia sesión"
+      },
+      en: {
+        brand: "PuntoSabor",
+        nav_about: "About",
+        nav_services: "Services",
+        nav_testimonials: "Testimonials",
+        nav_contact: "Contact Us",
+        header_register: "Sign Up",
+        hero_title_1: "Discover the",
+        hero_title_2: "Best Huariques",
+        hero_title_3: "in Lima",
+        hero_description: "We connect authentic food lovers with the tastiest local restaurants. Support small businesses and discover unique flavors.",
+        hero_cta_primary: "Start Free",
+        hero_cta_secondary: "See How It Works",
+        floating_card_1: "+500 Huariques",
+        floating_card_2: "4.9/5 Rating",
+        floating_card_3: "100% Authentic",
+        stat_1: "Registered Huariques",
+        stat_2: "Active Users",
+        stat_3: "Authentic Reviews",
+        stat_4: "Lima Districts",
+        benefits_title: "Why Choose PuntoSabor?",
+        benefits_subtitle: "The platform that transforms how you discover and support local Peruvian cuisine",
+        benefit_1_title: "Find Nearby",
+        benefit_1_desc: "Discover authentic huariques in your area with our interactive map. The home cooking you're looking for is closer than you think.",
+        benefit_2_title: "Real Reviews",
+        benefit_2_desc: "Read honest opinions from diners like you. No filters, just authentic experiences shared by the community.",
+        benefit_3_title: "Exclusive Promotions",
+        benefit_3_desc: "Access special offers and discounts at your favorite huariques. Save while supporting local businesses.",
+        benefit_4_title: "Support Local",
+        benefit_4_desc: "Every visit you make helps Peruvian entrepreneurs grow. Be part of the change in your gastronomic community.",
+        benefit_5_title: "Notifications",
+        benefit_5_desc: "Get alerts when your favorite places launch new dishes or special promotions. Never miss anything.",
+        benefit_6_title: "Easy to Use",
+        benefit_6_desc: "Intuitive interface designed for you to find what you're looking for in seconds. Simple, fast and effective.",
+        how_it_works_title: "How It Works",
+        how_it_works_subtitle: "In 3 simple steps you'll be enjoying the best local flavors",
+        step_1_title: "Sign Up Free",
+        step_1_desc: "Create your account in less than 2 minutes. No credit card needed, just your email and you're ready to start.",
+        step_2_title: "Explore Huariques",
+        step_2_desc: "Search by area, food type or favorite dish. Read authentic reviews, see delicious photos and find your next favorite place.",
+        step_3_title: "Enjoy and Share",
+        step_3_desc: "Visit the huarique, enjoy authentic food and share your experience with the community to help others.",
+        pricing_title: "Plans For Your Business",
+        pricing_subtitle: "Choose the perfect plan to grow your huarique",
+        plan_basic_name: "BASIC",
+        plan_basic_price: "Free",
+        plan_basic_period: "Forever",
+        plan_basic_feature_1: "Complete business profile",
+        plan_basic_feature_2: "Appears in searches",
+        plan_basic_feature_3: "Customer reviews",
+        plan_basic_feature_4: "Photo gallery",
+        plan_basic_feature_5: "Hours and location",
+        plan_basic_cta: "Start Free",
+        popular_badge: "MOST POPULAR",
+        plan_premium_name: "PREMIUM",
+        plan_premium_period: "per month",
+        plan_premium_feature_1: "Everything in Basic plan",
+        plan_premium_feature_2: "Featured in searches",
+        plan_premium_feature_3: "Featured promotions",
+        plan_premium_feature_4: "Detailed statistics",
+        plan_premium_feature_5: "Priority support",
+        plan_premium_feature_6: "3 monthly posts",
+        plan_premium_cta: "Try 15 Days Free",
+        plan_exclusive_name: "EXCLUSIVE",
+        plan_exclusive_period: "per month",
+        plan_exclusive_feature_1: "Everything in Premium plan",
+        plan_exclusive_feature_2: "Position #1 in results",
+        plan_exclusive_feature_3: "Home page advertising",
+        plan_exclusive_feature_4: "Event management",
+        plan_exclusive_feature_5: "Personalized consulting",
+        plan_exclusive_feature_6: "Unlimited posts",
+        plan_exclusive_cta: "Contact Sales",
+        testimonials_title: "What Our Users Say",
+        testimonials_subtitle: "Thousands of people are already discovering unique flavors every day",
+        testimonial_1_text: "Thanks to PuntoSabor I found the best ceviche of my life 3 blocks from my house. I had no idea this place existed!",
+        testimonial_1_name: "María Gonzales",
+        testimonial_1_location: "Miraflores, Lima",
+        testimonial_2_text: "As the owner of a small restaurant, PuntoSabor tripled my customers in 2 months. Amazing platform for local businesses.",
+        testimonial_2_name: "José Ramírez",
+        testimonial_2_location: "Owner - El Forastero",
+        testimonial_3_text: "The app is super easy to use and the reviews are honest. I've tried 12 different huariques this month and all excellent.",
+        testimonial_3_name: "Carlos Medina",
+        testimonial_3_location: "San Isidro, Lima",
+        cta_final_title: "Ready to Discover Unique Flavors?",
+        cta_final_description: "Join thousands of people who already support local Peruvian cuisine",
+        cta_final_primary: "Sign Up Now",
+        cta_final_secondary: "View Plans",
+        offer_badge_label: "Special offer:",
+        offer_badge_text: "First 100 businesses get 3 months Premium free",
+        footer_description: "Connecting authentic food lovers with the best huariques in Lima.",
+        footer_company: "Company",
+        footer_about: "About",
+        footer_services: "Services",
+        footer_blog: "Blog",
+        footer_careers: "Careers",
+        footer_press: "Press",
+        footer_business: "For Businesses",
+        footer_pricing: "Plans and Pricing",
+        footer_register_business: "Register Business",
+        footer_success: "Success Stories",
+        footer_resources: "Resources",
+        footer_help: "Help Center",
+        footer_contact: "Contact Us",
+        footer_location: "Lima, Peru",
+        footer_rights: "All rights reserved",
+        footer_privacy: "Privacy",
+        footer_terms: "Terms",
+        modal_title: "Sign Up Free!",
+        modal_subtitle: "Start discovering the best huariques today",
+        form_name: "Full name",
+        form_email: "Email",
+        form_password: "Password",
+        form_terms: "I accept the terms and conditions",
+        form_submit: "Create Free Account",
+        form_login_text: "Already have an account?",
+        form_login_link: "Log in"
+      }
     };
-    autosize(); updateCount();
-    ta.addEventListener('input', ()=>{ autosize(); updateCount(); });
-  }
 
-  // Imagen (si tienes estos ids en tu HTML)
-  const fileInput   = document.getElementById('fileInput');
-  const dropzone    = document.getElementById('dropzone');
-  const imageStage  = document.getElementById('imageStage');
-  const imageHint   = document.getElementById('imageHint');
-  const previewImg  = document.getElementById('previewImg');
-  const btnFitToggle= document.getElementById('btnFitToggle');
-  const btnRotate   = document.getElementById('btnRotate');
-  const triggers = ['btnUploadLeft','btnReplaceLeft','btnUploadRight','btnReplaceRight']
-                    .map(id=>document.getElementById(id)).filter(Boolean);
-  const removers  = ['btnRemoveLeft','btnRemoveRight'].map(id=>document.getElementById(id)).filter(Boolean);
+    let currentLang = 'es';
 
-  let rotation = 0, fitMode = 'contain';
-  const hasImage = ()=> previewImg && previewImg.getAttribute('src');
-  const showStage = (show)=>{
-    if (!imageStage || !dropzone || !imageHint) return;
-    imageStage.classList.toggle('hidden', !show);
-    dropzone.style.display = show?'none':'flex';
-    imageHint.style.display = show?'none':'block';
-  };
-  const applyTransform = ()=>{ if (previewImg) previewImg.style.transform = `translate(-50%,-50%) rotate(${rotation}deg)`; };
-  const setFit = (mode)=>{ fitMode=mode; if(previewImg){ previewImg.style.objectFit=mode; } if(btnFitToggle) btnFitToggle.textContent = (mode==='contain')?'Ajustar':'Cubrir'; };
-  const loadImage = (file)=>{
-    if (!file || !file.type.startsWith('image/')) return;
-    const reader = new FileReader();
-    reader.onload = e => { previewImg.src = e.target.result; rotation=0; applyTransform(); setFit('contain'); showStage(true); };
-    reader.readAsDataURL(file);
-  };
-
-  triggers.forEach(btn=>btn.addEventListener('click', ()=>fileInput && fileInput.click()));
-  removers.forEach(btn=>btn.addEventListener('click', ()=>{ if(previewImg){ previewImg.removeAttribute('src'); showStage(false);} }));
-
-  if (btnFitToggle) btnFitToggle.addEventListener('click', ()=> setFit(fitMode==='contain'?'cover':'contain'));
-  if (btnRotate) btnRotate.addEventListener('click', ()=>{ if(!hasImage()) return; rotation=(rotation+90)%360; applyTransform(); });
-  if (fileInput) fileInput.addEventListener('change', (e)=>{ const f=e.target.files?.[0]; if(f) loadImage(f); e.target.value=''; });
-
-  if (dropzone){
-    const prevent = e=>{ e.preventDefault(); e.stopPropagation(); };
-    ['dragenter','dragover','dragleave','drop'].forEach(evt=>dropzone.addEventListener(evt, prevent, false));
-    ['dragenter','dragover'].forEach(evt=>dropzone.addEventListener(evt, ()=>dropzone.classList.add('hover'), false));
-    ['dragleave','drop'].forEach(evt=>dropzone.addEventListener(evt, ()=>dropzone.classList.remove('hover'), false));
-    dropzone.addEventListener('drop', (e)=>{ const f=e.dataTransfer?.files?.[0]; if(f) loadImage(f); });
-    dropzone.addEventListener('click', ()=>fileInput && fileInput.click());
-  }
-})();
-</script>
-
-<script>
-/* =========================================================
-   Promos: animación reveal + ripple botón CTA
-   ========================================================= */
-(function(){
-  'use strict';
-  const items = document.querySelectorAll('#promos .reveal');
-  if (!('IntersectionObserver' in window) || !items.length){
-    items.forEach(el => el.classList.add('inview'));
-  } else {
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(({isIntersecting,target}, i)=>{
-        if (isIntersecting){
-          const delay = target.getAttribute('data-delay') || 0;
-          target.style.setProperty('--d', delay);
-          target.classList.add('inview');
-          io.unobserve(target);
+    function changeLanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
         }
       });
-    }, { rootMargin: '-5% 0px -20% 0px', threshold:.25 });
-    items.forEach((el, i)=>{ if(!el.hasAttribute('data-delay')) el.setAttribute('data-delay', i*220); io.observe(el); });
-  }
 
-  const btn = document.querySelector('#promos #btnBuscar');
-  if (!btn) return;
-  btn.addEventListener('click', (e)=>{
-    const rect = btn.getBoundingClientRect();
-    btn.style.setProperty('--rx', `${e.clientX-rect.left}px`);
-    btn.style.setProperty('--ry', `${e.clientY-rect.top}px`);
-    btn.classList.remove('ripple'); void btn.offsetWidth; btn.classList.add('ripple');
-  });
-})();
-</script>
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
+        }
+      });
 
-<script>
-/* =========================================================
-   Zonas: mapa + chips + buscador + logos (ÚNICO módulo)
-   ========================================================= */
-(function(){
-  'use strict';
-  // Evita dobles inicializaciones si se vuelve a cargar este script
-  if (window.__ZONES_MODULE__) return;
-  window.__ZONES_MODULE__ = true;
-
-  const mapEl    = document.getElementById('map-zones');
-  const $search  = document.getElementById('zonesSearch');
-  const $chips   = document.getElementById('zonesChips');
-  const $list    = document.getElementById('zonesList');
-  const $logoBox = document.getElementById('zone-selected');
-  if (!mapEl || !$search || !$chips || !$list || !$logoBox) return;
-
-  // Evitar "Map container is already initialized"
-  const cont = L.DomUtil.get(mapEl);
-  if (cont && cont._leaflet_id) cont._leaflet_id = null;
-
-  // Mapa
-  const map = L.map('map-zones', { zoomControl:true, scrollWheelZoom:true }).setView([-12.069,-77.035], 14);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:20, attribution:'&copy; OpenStreetMap' }).addTo(map);
-
-  // Logos
-  const LOGO_PATH = 'img/';
-  const META = {
-    forastero:  { lat:-12.0649, lng:-77.0375, logo:'Polleria_forastero.png' },
-    picanteria: { lat:-12.0842, lng:-77.0510, logo:'La_picanteria.png' },
-    marina:     { lat:-12.0781, lng:-77.0325, logo:'La_marina.png' },
-    donpepe:    { lat:-12.0625, lng:-77.0288, logo:'Pollos_pepe.png' },
-    antojitos:  { lat:-12.0707, lng:-77.0451, logo:'Antojos_criollos.png' },
-    dulcesazon: { lat:-12.0729, lng:-77.0368, logo:'Dulce_sazon.jpg' }
-  };
-
-  // Dataset lista
-  const PLACES = [...$list.querySelectorAll('li[data-id]')].map(li=>({
-    id: li.dataset.id, name: li.textContent.trim(), cat: li.dataset.cat, li
-  }));
-
-  // Icono circular con logo
-  const logoIcon = (file)=>{
-    const size = 46;
-    return L.icon({
-      iconUrl: `${LOGO_PATH}${file}`,
-      iconSize:[size,size], iconAnchor:[size/2,size], popupAnchor:[0,-size+10], className:'marker-logo'
-    });
-  };
-
-  // Marcadores con popup (solo imagen)
-  const markersById = new Map();
-  PLACES.forEach(p=>{
-    const m = META[p.id]; if(!m) return;
-    const mk = L.marker([m.lat,m.lng], { icon: logoIcon(m.logo) }).addTo(map);
-    mk.bindPopup(`<img src="${LOGO_PATH}${m.logo}" alt="${p.name}" class="popup-logo">`, { autoPan:true, closeButton:true });
-    mk.on('click', ()=>selectPlace(p.id, true));
-    markersById.set(p.id, mk);
-  });
-
-  let activeCat = 'all';
-  let activeId  = null;
-
-  function renderList(){
-    const q = $search.value.trim().toLowerCase();
-    PLACES.forEach(p=>{
-      const byCat = (activeCat==='all' || p.cat===activeCat);
-      const byTxt = p.name.toLowerCase().includes(q);
-      p.li.style.display = (byCat && byTxt)?'':'none';
-    });
-    if (activeId){
-      const still = PLACES.some(p=>p.id===activeId && p.li.style.display!=='none');
-      if (!still){ activeId=null; $logoBox.innerHTML=''; }
+      localStorage.setItem('preferredLang', lang);
     }
-  }
 
-  function selectPlace(id, center=false){
-    activeId = id;
-    PLACES.forEach(p=>p.li.classList.toggle('active', p.id===id));
-    const m = META[id];
-    if (center && markersById.has(id)){
-      const mk = markersById.get(id);
-      map.setView(mk.getLatLng(), 16, { animate:true });
-      mk.openPopup();
+    // Event listeners para botones de idioma
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const lang = this.getAttribute('data-lang');
+        changeLanguage(lang);
+      });
+    });
+
+    // Cargar idioma guardado
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferredLang') || 'es';
+      if (savedLang !== 'es') {
+        changeLanguage(savedLang);
+      }
+    });
+
+    // Intersection Observer para animaciones
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.benefit-card, .testimonial-card, .price-card, .stat-item, .step').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Counter animation
+    function animateCounter(element) {
+      const target = parseInt(element.getAttribute('data-count'));
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          element.textContent = target >= 1000 ? (target/1000).toFixed(0) + 'K+' : target + '+';
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(current >= 1000 ? current/1000 : current) + (target >= 1000 ? 'K' : '');
+        }
+      }, 16);
     }
-    $logoBox.innerHTML = m ? `<img src="${LOGO_PATH}${m.logo}" alt="${PLACES.find(p=>p.id===id)?.name||'Logo'}" class="brand-logo">` : '';
-  }
 
-  // Eventos
-  PLACES.forEach(p=> p.li.addEventListener('click', ()=>selectPlace(p.id, true)));
-  $chips.addEventListener('click', (e)=>{
-    const btn = e.target.closest('.chip'); if(!btn) return;
-    activeCat = btn.dataset.cat || 'all';
-    [...$chips.querySelectorAll('.chip')].forEach(c=>c.classList.toggle('active', c===btn));
-    renderList();
-  });
-  $search.addEventListener('input', renderList);
+    // Stats counter observer
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target.querySelector('h3');
+          if (counter && !counter.classList.contains('animated')) {
+            counter.classList.add('animated');
+            animateCounter(counter);
+          }
+        }
+      });
+    }, { threshold: 0.5 });
 
-  // Inicial
-  renderList();
-  const first = PLACES.find(p=>p.li.style.display!=='none');
-  if (first) selectPlace(first.id, true);
+    document.querySelectorAll('.stat-item').forEach(stat => {
+      statsObserver.observe(stat);
+    });
 
-  // Estilos mínimos (si prefieres, muévelo a tu CSS)
-  const css = `
-    .marker-logo { border-radius:50%; box-shadow:0 2px 8px rgba(0,0,0,.25); }
-    .leaflet-popup-content { margin:10px 12px; }
-    .leaflet-popup-content .popup-logo { width:120px; height:120px; object-fit:cover; border-radius:16px; display:block; }
-    #zone-selected { display:flex; align-items:center; justify-content:center; padding:16px; }
-    #zone-selected .brand-logo { max-width:180px; max-height:120px; object-fit:contain; display:block; }
-    #zonesList li.active { outline:3px solid rgba(210,203,71,.45); box-shadow:0 6px 18px rgba(0,0,0,.08) inset; }
-  `;
-  const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
-})();
-</script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerHeight = document.querySelector('.header').offsetHeight;
+          const targetPosition = target.offsetTop - headerHeight;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
 
-<script>
-/* =========================================================
-   Contacto: mapa independiente (no interfiere con Zonas)
-   ========================================================= */
-(function(){
-  'use strict';
-  const mapEl = document.getElementById('map-contact');
-  if (!mapEl) return;
+    // Modal functions
+    let lastFocus;
+    function openModal() {
+      lastFocus = document.activeElement;
+      document.getElementById('registrationModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      const focusable = document.querySelector('#registrationModal').querySelector('input,button,[href]');
+      if (focusable) focusable.focus();
+    }
 
-  // Evitar "already initialized"
-  const cont = L.DomUtil.get(mapEl);
-  if (cont && cont._leaflet_id) cont._leaflet_id = null;
+    function closeModal() {
+      document.getElementById('registrationModal').classList.remove('active');
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
 
-  // Coords por defecto (ajústalas a tu dirección)
-  const center = [-12.0464,-77.0428];
+    // Close modal on outside click
+    document.getElementById('registrationModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
 
-  const map = L.map('map-contact', { zoomControl:true, scrollWheelZoom:true }).setView(center, 15);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 20, attribution: '&copy; OpenStreetMap'
-  }).addTo(map);
+    // Close modal on ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
 
-  L.marker(center).addTo(map).bindPopup('Estamos aquí').openPopup();
-})();
-</script>
+    // Add animation delay to cards
+    document.querySelectorAll('.benefit-card').forEach((card, index) => {
+      card.style.transitionDelay = `${index * 0.1}s`;
+    });
 
-<script>
-(function(){
-  'use strict';
-  const el = document.getElementById('map-contact');
-  if (!el) return;
+    document.querySelectorAll('.testimonial-card').forEach((card, index) => {
+      card.style.transitionDelay = `${index * 0.15}s`;
+    });
 
-  // evita dobles inits
-  if (el.dataset.mapReady === '1') return;
-  el.dataset.mapReady = '1';
+    document.querySelectorAll('.price-card').forEach((card, index) => {
+      card.style.transitionDelay = `${index * 0.1}s`;
+    });
 
-  // altura mínima por si el layout lo deja a 0
-  if ((parseFloat(getComputedStyle(el).height) || 0) < 50) el.style.height = '320px';
+    // Parallax effect on hero
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroImage = document.querySelector('.hero-image-main');
+      if (heroImage && scrolled < window.innerHeight) {
+        heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+      }
+    });
 
-  // corrige “already initialized” si recargas scripts
-  if (el._leaflet_id) el._leaflet_id = null;
+    // Add hover effect to floating cards
+    document.querySelectorAll('.floating-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px) scale(1.05)';
+      });
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = '';
+      });
+    });
 
-  // centro (cámbialo a tu dirección)
-  const center = [-12.0464, -77.0428];
+    // Add ripple effect to buttons (renombrado a rippleBtn para evitar colisión con CSS)
+    document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
 
-  const map = L.map(el, { zoomControl:true, scrollWheelZoom:true }).setView(center, 15);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom:20, attribution:'&copy; OpenStreetMap'
-  }).addTo(map);
+        ripple.style.cssText = `
+          position: absolute;
+          width: ${size}px;
+          height: ${size}px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.5);
+          left: ${x}px;
+          top: ${y}px;
+          transform: scale(0);
+          animation: rippleBtn 0.6s ease-out;
+          pointer-events: none;
+        `;
 
-  L.marker(center).addTo(map).bindPopup('Estamos aquí').openPopup();
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
 
-  // re-dibujo si cambia tamaño o entra al viewport
-  const ro = new ResizeObserver(()=> map.invalidateSize());
-  ro.observe(el);
-  const io = new IntersectionObserver((e)=>{ if(e[0].isIntersecting) setTimeout(()=>map.invalidateSize(),150); }, {threshold:.1});
-  io.observe(el);
-})();
-</script>
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
 
+    // Add ripple animation (renombrada)
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes rippleBtn {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Loading animation for images
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('load', function() {
+        this.style.animation = 'fadeIn 0.5s ease-in';
+      });
+    });
+
+    // Form validation enhancement
+    document.querySelectorAll('input[required]').forEach(input => {
+      input.addEventListener('invalid', function(e) {
+        e.preventDefault();
+        this.classList.add('error');
+        setTimeout(() => this.classList.remove('error'), 300);
+      });
+
+      input.addEventListener('input', function() {
+        if (this.validity.valid) {
+          this.style.borderColor = 'var(--yellow-green)';
+        } else {
+          this.style.borderColor = '';
+        }
+      });
+    });
+
+    // Add shake animation for errors
+    const errorStyle = document.createElement('style');
+    errorStyle.textContent = `
+      .error {
+        animation: shake 0.3s ease-in-out;
+      }
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+      }
+    `;
+    document.head.appendChild(errorStyle);
+
+    // Lazy loading for performance
+    if ('IntersectionObserver' in window) {
+      const lazyImages = document.querySelectorAll('img[data-src]');
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+
+      lazyImages.forEach(img => imageObserver.observe(img));
+    }
+
+    // Performance optimization: Debounce scroll events
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
+      }
+      scrollTimeout = window.requestAnimationFrame(() => {
+        // Scroll-dependent animations go here
+      });
+    });
+
+    // Add entrance animation to page
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+
+    // Console easter egg
+    console.log('%c🍽️ PuntoSabor', 'font-size: 20px; font-weight: bold; color: #CA6527;');
+    console.log('%c¡Hola desarrollador! 👋', 'font-size: 14px; color: #57331F;');
+    console.log('%cSi encuentras bugs, escríbenos a: dev@puntosabor.com', 'font-size: 12px; color: #914C23;');
+
+    // Detectar preferencia del sistema para idioma
+    const systemLang = navigator.language || navigator.userLanguage;
+    const savedLang = localStorage.getItem('preferredLang');
+
+    if (!savedLang) {
+      if (systemLang.startsWith('en')) {
+        changeLanguage('en');
+      }
+    }
+  </script>
 
 </body>
 </html>
